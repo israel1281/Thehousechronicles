@@ -93,9 +93,17 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="category.html" class="nav-item nav-link">Category</a>
-                    <a href="single.html" class="nav-item nav-link">Single News</a>
+                    <script>
+                        window.addEventListener("click", function(event) {
+                            if (event.target.matches(".router-nav")) {
+                            let link = event.target.getAttribute("data-link");
+                            localStorage.setItem("selectedLink", link);
+                            }
+                        });
+                    </script>
+                    <a href="/" class="nav-item nav-link active router-nav">Home</a>
+                    <a href="/contact" class="nav-item nav-link router-nav">About us</a>
+                    <a href="single.html" class="nav-item nav-link"></a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
                         <div class="dropdown-menu catdr rounded-0 m-0">
@@ -103,23 +111,23 @@
                                 let dropdown = [
                                     {
                                         name: "Politics",
-                                        link: "category.html"
+                                        link: "/category"
                                     },
                                       {
                                         name: "Business",
-                                        link: "category.html"
+                                        link: "/category"
                                     },
                                       {
                                         name: "Corporate",
-                                        link: "category.html"
+                                        link: "/category"
                                     },
                                       {
                                         name: "Health",
-                                        link: "category.html"
+                                        link: "/category"
                                     },
                                       {
                                         name: "Education",
-                                        link: "category.html"
+                                        link: "/category"
                                     }
                                 ]
 
@@ -128,15 +136,22 @@
 
                                 dropdown.forEach(dpd => {
                                     dropdownHTML += `
-                                        <a href="${dpd.link}" class="dropdown-item">${dpd.name}</a>
+                                        <a href="${dpd.link}" class="dropdown-item router-nav" data-link="${dpd.name}">${dpd.name}</a>
                                     `;
                                 })
 
                                 dropdown1.innerHTML = dropdownHTML
+                                
+                                  dropdown1.addEventListener("click", function(event) {
+                                    if (event.target.matches(".router-nav")) {
+                                    let link = event.target.getAttribute("data-link");
+                                    localStorage.setItem("selectedLink", link);
+                                    }
+                                });
                             </script>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="/contact" class="nav-item nav-link">Contact</a>
                 </div>
                 <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control border-0" placeholder="Keyword">
@@ -197,17 +212,22 @@
                                     <div class="overlay">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                                href="">${news.category}</a>
-                                            <a class="text-white" href="">${news.date}</a>
+                                                href="/category" data-link="${news.category}">${news.category}</a>
+                                            <a class="text-white" href="/content" data-link="${news.title}">${news.date}</a>
                                         </div>
- <a class="m-0 text-white" href="">${news.author}</a>
-                                        <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">${news.title}</a>
+                                        <a class="m-0 text-white" href="/category" data-link="${news.author}">${news.author}</a>
+                                        <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/content" data-link="${news.title}">${news.title}</a>
                                     </div>
                                 </div>
                             `;
                         });
                 
                         carousel.innerHTML = carouselHTML;
+                        
+                        window.addEventListener("click", function(event) {
+                            let link = event.target.getAttribute("data-link");
+                            localStorage.setItem("selectedLink", link);
+                        });
                     </script>
                 </div>
             </div>
@@ -256,10 +276,10 @@
                                         <div class="overlay">
                                             <div class="mb-2">
                                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                                    href="">${news.category}</a>
-                                                <a class="text-white" href="">${news.date}</a>
+                                                    href="/category" data-link="${news.category}">${news.category}</a>
+                                                <a class="text-white" href="/content" data-link="${news.title}">${news.date}</a>
                                             </div>
-                                            <a class="h6 m-0 text-white text-uppercase font-weight-semibold" href="">${news.title}</a>
+                                            <a class="h6 m-0 text-white text-uppercase font-weight-semibold" href="/content" data-link="${news.title}">${news.title}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -267,6 +287,10 @@
                         });
                 
                         carousel1.innerHTML = carouselHTML1;
+                        window.addEventListener("click", function(event) {
+                            let link = event.target.getAttribute("data-link");
+                            localStorage.setItem("selectedLink", link);
+                        });
                     </script>
                 </div>
             </div>
@@ -369,17 +393,21 @@
                                 <div class="overlay">
                                     <div class="mb-2">
                                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">${ft.category}</a>
-                                        <a class="text-white" href=""><small>${ft.date}</small></a>
+                                            href="/category" data-link="${ft.category}">${ft.category}</a>
+                                        <a class="text-white" href="/content" data-link="${ft.title}"><small>${ft.date}</small></a>
                                     </div>
-                                      <a class="m-0 text-white" href="">${ft.author}</a>
-                                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">${ft.title}</a>
+                                      <a class="m-0 text-white" href="/category" data-link="${ft.author}">${ft.author}</a>
+                                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/content" data-link="${ft.title}">${ft.title}</a>
                                 </div>
                             </div>
                         `;
                     })
 
                     featured1.innerHTML = carouselHTML3
+                    window.addEventListener("click", function(event) {
+                        let link = event.target.getAttribute("data-link");
+                        localStorage.setItem("selectedLink", link);
+                    });
                 </script>
             </div>
         </div>
@@ -394,32 +422,10 @@
                 <div class="col-lg-8 catsect">
                     <script>
                     
-                    let categoriesData = [
-                            {
-                                image: "img/IGNITION TEMPLATE.jpg",
-                                category: "Business",
-                                date: "Jan 01, 2045",
-                                title: "Lorem ipsum dolor sit amet elit. Proin vitae porta diam..."
-                            },
-                            {
-                                image: "img/BANTS EFE.jpg",
-                                category: "Business",
-                                date: "Jan 01, 2045",
-                                title: "Lorem ipsum dolor sit amet elit. Proin vitae porta diam..."
-                            },
-                            {
-                                image: "img/BANTS GAISE.jpg",
-                                category: "Business",
-                                date: "Jan 01, 2045",
-                                title: "Lorem ipsum dolor sit amet elit. Proin vitae porta diam..."
-                            },
-                            {
-                                image: "img/BANTS WITH LAYZEE ELLA.jpg",
-                                category: "Business",
-                                date: "Jan 01, 2045",
-                                title: "Lorem ipsum dolor sit amet elit. Proin vitae porta diam..."
-                            }
-                    ]
+                    function truncate(text) {
+                        if (text.length > 10)
+                            return text = text.substring(0, 15) + "...";
+                    }
                         let categoriesSection = [
                             {
                                 name: "Content creation",
@@ -435,7 +441,7 @@
                                 image: "img/IGNITION TEMPLATE.jpg",
                                 category: "Content creation",
                                 date: "Jan 11, 2023",
-                                title: "How to start content creation on youtube",
+                                title: truncate("How to start content creation on youtube"),
                                 author: "Damzee"
                             },
                             {
@@ -443,21 +449,21 @@
                                 category: "Politics",
                                 date: "Jan 12, 2023",
                                 author: "Efe",
-                                title: "Politics today"
+                                title: truncate("Politics today")
                             },
                             {
                                 image: "img/BANTS GAISE.jpg",
                                 category: "Gospel",
                                 date: "Jan 10, 2023",
                                 author: "Gaise Baba",
-                                title: "Need for the presence of God"
+                                title: truncate("Need for the presence of God")
                             },
                             {
                                 image: "img/BANTS WITH LAYZEE ELLA.jpg",
                                 category: "Bants",
                                 date: "Jan 12, 2023",
                                 author: "Layzee Ella",
-                                title: "How to get hypnotised"
+                                title: truncate("How to get hypnotised")
                             }
                     ]
                             },
@@ -475,7 +481,7 @@
                                 image: "img/IGNITION TEMPLATE.jpg",
                                 category: "Content creation",
                                 date: "Jan 11, 2023",
-                                title: "How to start content creation on youtube",
+                                title: truncate("How to start content creation on youtube"),
                                 author: "Damzee"
                             },
                             {
@@ -483,21 +489,21 @@
                                 category: "Politics",
                                 date: "Jan 12, 2023",
                                 author: "Efe",
-                                title: "Politics today"
+                                title: truncate("Politics today")
                             },
                             {
                                 image: "img/BANTS WITH LAYZEE ELLA.jpg",
                                 category: "Bants",
                                 date: "Jan 12, 2023",
                                 author: "Layzee Ella",
-                                title: "How to get hypnotised"
+                                title: truncate("How to get hypnotised")
                             },
                             {
                                 image: "img/BANTS WITH LAYZEE ELLA.jpg",
                                 category: "Bants",
                                 date: "Jan 12, 2023",
                                 author: "Layzee Ella",
-                                title: "How to get hypnotised"
+                                title: truncate("How to get hypnotised")
                             }
                     ]
                             },
@@ -516,13 +522,13 @@
                                 category: "Bants",
                                 date: "Jan 12, 2023",
                                 author: "Layzee Ella",
-                                title: "How to get hypnotised"
+                                title: truncate("How to get hypnotised")
                             },
                             {
                                 image: "img/IGNITION TEMPLATE.jpg",
                                 category: "Content creation",
                                 date: "Jan 11, 2023",
-                                title: "How to start content creation on youtube",
+                                title: truncate("How to start content creation on youtube"),
                                 author: "Damzee"
                             },
                             {
@@ -530,14 +536,14 @@
                                 category: "Gospel",
                                 date: "Jan 10, 2023",
                                 author: "Gaise Baba",
-                                title: "Need for the presence of God"
+                                title: truncate("Need for the presence of God")
                             },
                             {
                                 image: "img/BANTS WITH LAYZEE ELLA.jpg",
                                 category: "Bants",
                                 date: "Jan 12, 2023",
                                 author: "Layzee Ella",
-                                title: "How to get hypnotised"
+                                title: truncate("How to get hypnotised")
                             }
                     ]
                             },
@@ -555,7 +561,7 @@
                                 image: "img/IGNITION TEMPLATE.jpg",
                                 category: "Content creation",
                                 date: "Jan 11, 2023",
-                                title: "How to start content creation on youtube",
+                                title: truncate("How to start content creation on youtube"),
                                 author: "Damzee"
                             },
                             {
@@ -563,21 +569,21 @@
                                 category: "Politics",
                                 date: "Jan 12, 2023",
                                 author: "Efe",
-                                title: "Politics today"
+                                title: truncate("Politics today")
                             },
                             {
                                 image: "img/BANTS GAISE.jpg",
                                 category: "Gospel",
                                 date: "Jan 10, 2023",
                                 author: "Gaise Baba",
-                                title: "Need for the presence of God"
+                                title: truncate("Need for the presence of God")
                             },
                             {
                                 image: "img/BANTS WITH LAYZEE ELLA.jpg",
                                 category: "Bants",
                                 date: "Jan 12, 2023",
                                 author: "Layzee Ella",
-                                title: "How to get hypnotised"
+                                title: truncate("How to get hypnotised")
                             },
                     ]
                             },
@@ -594,7 +600,7 @@
                                 <div class="col-12">
                                     <div class="section-title">
                                         <h4 class="m-0 text-uppercase font-weight-bold">${catS.name}</h4>
-                                        <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
+                                        <a class="text-secondary font-weight-medium text-decoration-none" href="/category" data-link="${catS.name}">View All</a>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -606,10 +612,11 @@
                                             <div class="mt-auto p-4">
                                                 <div class="mb-2">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                                        href="">${catS.posts[0].category}</a>
-                                                    <a class="text-body" href=""><small>${catS.posts[0].date}</small></a>
+                                                        href="/category" data-link="${catS.posts[0].category}">${catS.posts[0].category}</a>
+                                                    <a class="text-body" href="/content" data-link="${catS.posts[0].title}"><small>${catS.posts[0].date}</small></a>
                                                 </div>
-                                                <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">${catS.posts[0].title}</a>
+                                                <a class=" d-block mb-1 text-secondary" href="/category" data-link="${catS.posts[0].author}">${catS.posts[0].author}</a>
+                                                <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="/constent" data-link="catS.posts[0].title">${catS.posts[0].title}</a>
                                                 <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
                                                     rebum clita rebum dolor stet amet justo</p>
                                             </div>
@@ -624,6 +631,7 @@
                                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">${catS.posts[1].category}</a>
                                                 <a class="text-body" href=""><small>${catS.posts[1].date}</small></a>
                                             </div>
+                                            <a class=" d-block mb-1 text-secondary" href="">${catS.posts[1].author}</a>
                                             <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">${catS.posts[1].title}</a>
                                         </div>
                                     </div>
@@ -634,6 +642,7 @@
                                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">${catS.posts[2].category}</a>
                                                 <a class="text-body" href=""><small>${catS.posts[2].date}</small></a>
                                             </div>
+                                            <a class=" d-block mb-1 text-secondary" href="">${catS.posts[2].author}</a>
                                             <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">${catS.posts[2].title}</a>
                                         </div>
                                     </div>
@@ -646,6 +655,7 @@
                                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">${catS.posts[3].category}</a>
                                                 <a class="text-body" href=""><small>${catS.posts[3].date}</small></a>
                                             </div>
+                                            <a class=" d-block mb-1 text-secondary" href="">${catS.posts[3].author}</a>
                                             <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">${catS.posts[3].title}</a>
                                         </div>
                                     </div>
@@ -656,6 +666,7 @@
                                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">${catS.posts[4].category}</a>
                                                 <a class="text-body" href=""><small>${catS.posts[4].date}</small></a>
                                             </div>
+                                            <a class=" d-block mb-1 text-secondary" href="">${catS.posts[4].author}</a>
                                             <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">${catS.posts[4].title}</a>
                                         </div>
                                     </div>
@@ -706,7 +717,7 @@
                         </div>
                         <div class="bg-white text-center border border-top-0 p-3">
                             <!-- <a href=""><img class="img-fluid" src="img/BANTS WITH LAYZEE ELLA.jpg" alt=""></a> -->
-                            <video class="img-fluid" src="img/Are You With Me.mp4" autoplay preload="none"/>
+                            <video class="img-fluid" src="img/Are You With Me.mp4" controls autoplay muted preload="none"/>
                         </div>
                     </div>
                     <!-- Ads End -->
@@ -718,25 +729,40 @@
                         </div>
                         <div class="bg-white trd border border-top-0 p-3">
                             <script>
+                                function truncate(text) {
+                                    if (text.length > 10)
+                                        return text = text.substring(0, 15) + "...";
+                                }
+                    
                                 let trending = [
-                                    {
-                                        image: "img/IGNITION TEMPLATE.jpg",
-                                        category: "Business",
-                                        date: "Jan 01, 2045",
-                                        title: "Lorem ipsum dolor sit amet elit. Proin vitae porta diam..."
-                                    },
-                                    {
-                                        image: "img/BANTS EFE.jpg",
-                                        category: "Business",
-                                        date: "Jan 01, 2045",
-                                        title: "Lorem ipsum dolor sit amet elit. Proin vitae porta diam..."
-                                    },
-                                    {
-                                        image: "img/BANTS GAISE.jpg",
-                                        category: "Business",
-                                        date: "Jan 01, 2045",
-                                        title: "Lorem ipsum dolor sit amet elit. Proin vitae porta diam..."
-                                    },
+                                   {
+                                image: "img/BANTS WITH LAYZEE ELLA.jpg",
+                                category: "Bants",
+                                date: "Jan 12, 2023",
+                                author: "Layzee Ella",
+                                title: truncate("How to get hypnotised")
+                            },
+                             {
+                                image: "img/IGNITION TEMPLATE.jpg",
+                                category: "Content creation",
+                                date: "Jan 11, 2023",
+                                title: truncate("How to start content creation on youtube"),
+                                author: "Damzee"
+                            },
+                            {
+                                image: "img/BANTS EFE.jpg",
+                                category: "Politics",
+                                date: "Jan 12, 2023",
+                                author: "Efe",
+                                title: truncate("Politics today")
+                            },
+                            {
+                                image: "img/BANTS GAISE.jpg",
+                                category: "Gospel",
+                                date: "Jan 10, 2023",
+                                author: "Gaise Baba",
+                                title: truncate("Need for the presence of God")
+                            },
                                 ]
 
                                 let trending1 = document.querySelector(".trd")
@@ -751,6 +777,7 @@
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">${tr.category}</a>
                                                     <a class="text-body" href=""><small>${tr.date}</small></a>
                                                 </div>
+                                                 <a class="m-0 text-secondary" href="">${tr.author}</a>
                                                 <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">${tr.title}</a>
                                             </div>
                                         </div>
@@ -850,20 +877,23 @@
                     <script>
                         let popular = [
                             {
-                                category: "Business",
-                                date: "Jan 01, 2045",
-                                title: "Lorem ipsum dolor sit amet elit. Proin vitae porta diam..."
+                                category: "Gospel",
+                                date: "Jan 10, 2023",
+                                author: "Gaise Baba",
+                                title: "Need for the presence of God"
                             },
-                            {
-                                category: "Business",
-                                date: "Jan 01, 2045",
-                                title: "Lorem ipsum dolor sit amet elit. Proin vitae porta diam..."
+                             {
+                                category: "Content creation",
+                                date: "Jan 11, 2023",
+                                title: "How to start content creation on youtube",
+                                author: "Damzee"
                             },
-                            {
-                                category: "Business",
-                                date: "Jan 01, 2045",
-                                title: "Lorem ipsum dolor sit amet elit. Proin vitae porta diam..."
-                            }
+                                                         {
+                                category: "Content creation",
+                                date: "Jan 11, 2023",
+                                title: "How to start content creation on youtube",
+                                author: "Damzee"
+                            },
                         ]
     
                         let popular1 = document.querySelector(".pop")

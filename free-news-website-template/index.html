@@ -328,7 +328,7 @@
 
                             newBreaking.forEach(br => {
                                 carouselHTML2 += `
-                                <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">${br.title}</a></div>
+                                <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="/content" data-link="${br.title}">${br.title}</a></div>
                                 `;
                             })
 
@@ -616,7 +616,7 @@
                                                     <a class="text-body" href="/content" data-link="${catS.posts[0].title}"><small>${catS.posts[0].date}</small></a>
                                                 </div>
                                                 <a class=" d-block mb-1 text-secondary" href="/category" data-link="${catS.posts[0].author}">${catS.posts[0].author}</a>
-                                                <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="/constent" data-link="catS.posts[0].title">${catS.posts[0].title}</a>
+                                                <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS.posts[0].title}">${catS.posts[0].title}</a>
                                                 <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
                                                     rebum clita rebum dolor stet amet justo</p>
                                             </div>
@@ -628,22 +628,22 @@
                                         <img class="img-fluid" style="width: 110px; height: 110px;" src="${catS.posts[1].image}" alt="">
                                         <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                             <div class="mb-2">
-                                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">${catS.posts[1].category}</a>
-                                                <a class="text-body" href=""><small>${catS.posts[1].date}</small></a>
+                                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="${catS.posts[1].category}">${catS.posts[1].category}</a>
+                                                <a class="text-body" href="/content" data-link="${catS.posts[1].date}"><small>${catS.posts[1].date}</small></a>
                                             </div>
-                                            <a class=" d-block mb-1 text-secondary" href="">${catS.posts[1].author}</a>
-                                            <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">${catS.posts[1].title}</a>
+                                            <a class=" d-block mb-1 text-secondary" href="/category" data-link="${catS.posts[1].author}">${catS.posts[1].author}</a>
+                                            <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS.posts[1].title}">${catS.posts[1].title}</a>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
                                         <img class="img-fluid" style="width: 110px; height: 110px;" src="${catS.posts[2].image}" alt="">
                                         <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                             <div class="mb-2">
-                                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">${catS.posts[2].category}</a>
-                                                <a class="text-body" href=""><small>${catS.posts[2].date}</small></a>
+                                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="${catS.posts[2].category}">${catS.posts[2].category}</a>
+                                                <a class="text-body" href="/content" data-link="${catS.posts[2].title}"><small>${catS.posts[2].date}</small></a>
                                             </div>
-                                            <a class=" d-block mb-1 text-secondary" href="">${catS.posts[2].author}</a>
-                                            <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">${catS.posts[2].title}</a>
+                                            <a class=" d-block mb-1 text-secondary" href="/category" data-link="${catS.posts[2].author}">${catS.posts[2].author}</a>
+                                            <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS.posts[2].title}">${catS.posts[2].title}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -653,7 +653,7 @@
                                         <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                             <div class="mb-2">
                                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">${catS.posts[3].category}</a>
-                                                <a class="text-body" href=""><small>${catS.posts[3].date}</small></a>
+                                                <a class="text-body" href="/category" data-link="${catS.posts[3].date}"><small>${catS.posts[3].date}</small></a>
                                             </div>
                                             <a class=" d-block mb-1 text-secondary" href="">${catS.posts[3].author}</a>
                                             <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">${catS.posts[3].title}</a>
@@ -663,11 +663,11 @@
                                         <img class="img-fluid" style="width: 110px; height: 110px;" src="${catS.posts[4].image}" alt="">
                                         <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                             <div class="mb-2">
-                                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">${catS.posts[4].category}</a>
-                                                <a class="text-body" href=""><small>${catS.posts[4].date}</small></a>
+                                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="${catS.posts[4].category}">${catS.posts[4].category}</a>
+                                                <a class="text-body" href="/category" data-link="${catS.posts[4].date}"><small>${catS.posts[4].date}</small></a>
                                             </div>
-                                            <a class=" d-block mb-1 text-secondary" href="">${catS.posts[4].author}</a>
-                                            <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">${catS.posts[4].title}</a>
+                                            <a class=" d-block mb-1 text-secondary" href="/category" data-link="${catS.posts[4].author}">${catS.posts[4].author}</a>
+                                            <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS.posts[4].title}">${catS.posts[4].title}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -774,11 +774,11 @@
                                             <img style="width:110px; height:110px;" class="img-fluid" src="${tr.image}" alt="">
                                             <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                                 <div class="mb-2">
-                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">${tr.category}</a>
-                                                    <a class="text-body" href=""><small>${tr.date}</small></a>
+                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="${tr.category}">${tr.category}</a>
+                                                    <a class="text-body" href="/category" data-link="${tr.date}"><small>${tr.date}</small></a>
                                                 </div>
-                                                 <a class="m-0 text-secondary" href="">${tr.author}</a>
-                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">${tr.title}</a>
+                                                 <a class="m-0 text-secondary" href="/category" data-link="${tr.author}">${tr.author}</a>
+                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${tr.title}">${tr.title}</a>
                                             </div>
                                         </div>
                                     `;
@@ -836,7 +836,7 @@
 
                                     tags.forEach(tg => {
                                         tagsHTML += `
-                                            <a href="" class="btn btn-sm btn-outline-secondary m-1">${tg.name}</a>
+                                            <a href="/category" data-link="${tg.name}" class="btn btn-sm btn-outline-secondary m-1">${tg.name}</a>
                                         `;
                                     })
 
@@ -903,10 +903,10 @@
                             popularHTML += `
                                 <div class="mb-3">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">${pp.category}</a>
-                                        <a class="text-body" href=""><small>${pp.date}</small></a>
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="${pp.category}">${pp.category}</a>
+                                        <a class="text-body" href="/category" data-link="${pp.date}"><small>${pp.date}</small></a>
                                     </div>
-                                    <a class="small text-body text-uppercase font-weight-medium" href="">${pp.title}</a>
+                                    <a class="small text-body text-uppercase font-weight-medium" href="/content" data-link="${pp.title}">${pp.title}</a>
                                 </div>
                             `;
                         })
@@ -942,7 +942,7 @@
 
                         footerCategoriesList.forEach(ftl => {
                             footerCategoriesListHTML += `
-                                <a href="" class="btn btn-sm btn-secondary m-1">${ftl.name}</a>
+                                <a href="/category" data-link="${ftl.name}" class="btn btn-sm btn-secondary m-1">${ftl.name}</a>
                             `;
                         })
 
@@ -981,7 +981,7 @@
                         flickr.forEach(flrk => {
                             flickrHTML += `
                                 <div class="col-4 mb-3">
-                                    <a href=""><img class="w-100" src="${flrk.image}" alt=""></a>
+                                    <img class="w-100" src="${flrk.image}" alt="">
                                 </div>
                             `;
                         })

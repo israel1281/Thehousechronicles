@@ -2019,7 +2019,7 @@ pre code {
   background-color: #fff;
   border-color: #ffe680;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(255, 204, 0, 0.25);
+  box-shadow: 0 0 0 0.2rem #34ce57;
 }
 
 .form-control::placeholder {
@@ -9665,7 +9665,7 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #ffcc00 !important;
+  color: #34ce57 !important;
 }
 
 a.text-primary:hover,

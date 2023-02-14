@@ -38,19 +38,7 @@
         <div class="row align-items-center bg-dark px-lg-5">
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-sm bg-dark p-0">
-                    <ul class="navbar-nav ml-n2">
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Monday, January 1, 2045</a>
-                        </li>
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Advertise</a>
-                        </li>
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body small" href="#">Login</a>
-                        </li>
+                    <ul class="navbar-nav ml-n2" id="navLinks">
                     </ul>
                 </nav>
             </div>
@@ -86,7 +74,7 @@
                 </a>
             </div>
             <div class="col-lg-8 text-center text-lg-right">
-                <a href="#"><img id="imageSlider" style="height:80px; width: 600px" class="img-fluid" src="img/image2-add.jpeg" alt=""></a>
+                <a href="#"><img id="imageSlider" style="height:80px; width: 600px" class="img-fluid" src="img/ads-728x90.png" alt=""></a>
             </div>
         </div>
     </div>
@@ -104,18 +92,65 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="index.html" class="nav-item nav-link">Home</a>
-                    <a href="category.html" class="nav-item nav-link active">Category</a>
-                    <a href="single.html" class="nav-item nav-link">Single News</a>
+                    <script>
+                        window.addEventListener("click", function(event) {
+                            if (event.target.matches(".router-nav")) {
+                            let link = event.target.getAttribute("data-link");
+                            localStorage.setItem("selectedLink", link);
+                            }
+                        });
+                    </script>
+                    <a href="/" class="nav-item nav-link active router-nav">Home</a>
+                    <a href="/contact" class="nav-item nav-link router-nav">About us</a>
+                    <a href="single.html" class="nav-item nav-link"></a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="#" class="dropdown-item">Menu item 1</a>
-                            <a href="#" class="dropdown-item">Menu item 2</a>
-                            <a href="#" class="dropdown-item">Menu item 3</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0">
+                            <script>
+                                let dropdown = [
+                                    {
+                                        name: "Politics",
+                                        link: "/category"
+                                    },
+                                      {
+                                        name: "Business",
+                                        link: "/category"
+                                    },
+                                      {
+                                        name: "Corporate",
+                                        link: "/category"
+                                    },
+                                      {
+                                        name: "Health",
+                                        link: "/category"
+                                    },
+                                      {
+                                        name: "Education",
+                                        link: "/category"
+                                    }
+                                ]
+
+                                let dropdown1 = document.querySelector(".catdr")
+                                let dropdownHTML = "";
+
+                                dropdown.forEach(dpd => {
+                                    dropdownHTML += `
+                                        <a href="${dpd.link}" class="dropdown-item router-nav" data-link="${dpd.name}">${dpd.name}</a>
+                                    `;
+                                })
+
+                                dropdown1.innerHTML = dropdownHTML
+                                
+                                  dropdown1.addEventListener("click", function(event) {
+                                    if (event.target.matches(".router-nav")) {
+                                    let link = event.target.getAttribute("data-link");
+                                    localStorage.setItem("selectedLink", link);
+                                    }
+                                });
+                            </script>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="/contact" class="nav-item nav-link">Contact</a>
                 </div>
                 <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control border-0" placeholder="Keyword">
@@ -131,236 +166,109 @@
 
 
     <!-- News With Sidebar Start -->
-    <div class="container-fluid mt-5 pt-3">
+<div class="container-fluid mt-5 pt-3">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="section-title">
-                                <h4 class="m-0 text-uppercase font-weight-bold">Category: Business</h4>
-                                <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
-                                <div class="bg-white border border-top-0 p-4">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                    <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                        rebum clita rebum dolor stet amet justo</p>
-                                </div>
-                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25" alt="">
-                                        <small>John Doe</small>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
-                                        <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="img/news-700x435-2.jpg" style="object-fit: cover;">
-                                <div class="bg-white border border-top-0 p-4">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                    <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                        rebum clita rebum dolor stet amet justo</p>
-                                </div>
-                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25" alt="">
-                                        <small>John Doe</small>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
-                                        <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 mb-3">
-                            <a href=""><img class="img-fluid w-100" src="img/ads-728x90.png" alt=""></a>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="img/news-700x435-3.jpg" style="object-fit: cover;">
-                                <div class="bg-white border border-top-0 p-4">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h4 d-block mb-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25" alt="">
-                                        <small>John Doe</small>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
-                                        <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
+                    <div class="row" id="categories-wrapper">
+                        <script>
+                            let categoriesData = [
+                                {
+                                    image: "img/IGNITION TEMPLATE.jpg",
+                                    category: "Content creation",
+                                    date: "Jan 11, 2023",
+                                    title: "How to start content creation on youtube",
+                                    author: "Damzee"
+                                },
+                                {
+                                    image: "img/BANTS EFE.jpg",
+                                    category: "Politics",
+                                    date: "Jan 12, 2023",
+                                    author: "Efe",
+                                    title: "Politics today"
+                                },
+                                {
+                                    image: "img/BANTS GAISE.jpg",
+                                    category: "Gospel",
+                                    date: "Jan 10, 2023",
+                                    author: "Gaise Baba",
+                                    title: "Need for the presence of God"
+                                },
+                                {
+                                    image: "img/BANTS WITH LAYZEE ELLA.jpg",
+                                    category: "Bants",
+                                    date: "Jan 12, 2023",
+                                    author: "Layzee Ella",
+                                    title: "How to get hypnotised"
+                                },
+                                                            {
+                                    image: "img/BANTS GAISE.jpg",
+                                    category: "Gospel",
+                                    date: "Jan 10, 2023",
+                                    author: "Gaise Baba",
+                                    title: "Need for the presence of God"
+                                },
+                                {
+                                    image: "img/BANTS WITH LAYZEE ELLA.jpg",
+                                    category: "Bants",
+                                    date: "Jan 12, 2023",
+                                    author: "Layzee Ella",
+                                    title: "How to get hypnotised"
+                                },
+                                                            {
+                                    image: "img/BANTS GAISE.jpg",
+                                    category: "Gospel",
+                                    date: "Jan 10, 2023",
+                                    author: "Gaise Baba",
+                                    title: "Need for the presence of God"
+                                },
+                                {
+                                    image: "img/BANTS WITH LAYZEE ELLA.jpg",
+                                    category: "Bants",
+                                    date: "Jan 12, 2023",
+                                    author: "Layzee Ella",
+                                    title: "How to get hypnotised"
+                                }
+                            ]
+                            
+                            let categoryName = localStorage.getItem("selectedLink")
+                            let categoriesWrapper = document.getElementById("categories-wrapper")
+                            let categoriesChild = `
+                                <div class="col-12">
+                                    <div class="section-title">
+                                        <h4 class="m-0 text-uppercase font-weight-bold">Category: ${categoryName}</h4>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="img/news-700x435-4.jpg" style="object-fit: cover;">
-                                <div class="bg-white border border-top-0 p-4">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h4 d-block mb-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25" alt="">
-                                        <small>John Doe</small>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
-                                        <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-1.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-2.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-3.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-4.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 mb-3">
-                            <a href=""><img class="img-fluid w-100" src="img/ads-728x90.png" alt=""></a>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="row news-lg mx-0 mb-3">
-                                <div class="col-md-6 h-100 px-0">
-                                    <img class="img-fluid h-100" src="img/news-700x435-5.jpg" style="object-fit: cover;">
-                                </div>
-                                <div class="col-md-6 d-flex flex-column border bg-white h-100 px-0">
-                                    <div class="mt-auto p-4">
-                                        <div class="mb-2">
-                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                                href="">Business</a>
-                                            <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                                ${
+                                    categoriesData.map(data => `
+                                        <div class="col-lg-6">
+                                            <div class="position-relative mb-3">
+                                                <img class="img-fluid w-100" src="${data.image}" style="object-fit: cover;">
+                                                <div class="bg-white border border-top-0 p-4">
+                                                    <div class="mb-2">
+                                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                                            href="">${data.category}</a>
+                                                        <a class="text-body" href=""><small>${data.date}</small></a>
+                                                    </div>
+                                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">${data.title}</a>
+                                                    <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
+                                                        rebum clita rebum dolor stet amet justo</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                        <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                            rebum clita rebum dolor stet amet justo</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between bg-white border-top mt-auto p-4">
-                                        <div class="d-flex align-items-center">
-                                            <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25" alt="">
-                                            <small>John Doe</small>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
-                                            <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-1.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-2.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-3.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-4.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                        </div>
+                                    `).join('')
+                                }
+                            `;
+                            
+                            categoriesWrapper.innerHTML = categoriesChild
+                        </script>
+                    </div>
+                    <div style="width: 100%; height: 6vh; margin-right: 50%; margin-top: 40px; display: flex; justify-content: center">
+                        <a href="#" style="background-color: #ddd; color: black; padding: 8px 16px; text-decoration: none; border-radius: 50%; margin-right: 10px;">&laquo;</a>
+                        <a href="#" style="background-color: #ddd; color: black; padding: 8px 16px; text-decoration: none; border-radius: 50%; margin-right: 10px;">1</a>
+                        <a href="#" style="background-color: #ddd; color: black; padding: 8px 16px; text-decoration: none; border-radius: 50%; margin-right: 10px;">2</a>
+                        <a href="#" style="background-color: #ddd; color: black; padding: 8px 16px; text-decoration: none; border-radius: 50%; margin-right: 10px;">3</a>
+                        <a href="#" style="background-color: #ddd; color: black; padding: 8px 16px; text-decoration: none; border-radius: 50%; margin-right: 10px;">&raquo;</a>
                     </div>
                 </div>
                 
@@ -405,7 +313,8 @@
                             <h4 class="m-0 text-uppercase font-weight-bold">Advertisement</h4>
                         </div>
                         <div class="bg-white text-center border border-top-0 p-3">
-                            <a href=""><img class="img-fluid" src="img/news-800x500-2.jpg" alt=""></a>
+                            <!-- <a href=""><img class="img-fluid" src="img/BANTS WITH LAYZEE ELLA.jpg" alt=""></a> -->
+                            <video class="img-fluid" src="img/Are You With Me.mp4" controls autoplay muted preload="none"/>
                         </div>
                     </div>
                     <!-- Ads End -->
@@ -413,59 +322,67 @@
                     <!-- Popular News Start -->
                     <div class="mb-3">
                         <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Tranding News</h4>
+                            <h4 class="m-0 text-uppercase font-weight-bold">Trending</h4>
                         </div>
-                        <div class="bg-white border border-top-0 p-3">
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-1.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-2.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-3.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-4.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-5.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
+                        <div class="bg-white trd border border-top-0 p-3">
+                            <script>
+                                function truncate(text) {
+                                    if (text.length > 10)
+                                        return text = text.substring(0, 15) + "...";
+                                }
+                    
+                                let trending = [
+                                   {
+                                image: "img/BANTS WITH LAYZEE ELLA.jpg",
+                                category: "Bants",
+                                date: "Jan 12, 2023",
+                                author: "Layzee Ella",
+                                title: truncate("How to get hypnotised")
+                            },
+                             {
+                                image: "img/IGNITION TEMPLATE.jpg",
+                                category: "Content creation",
+                                date: "Jan 11, 2023",
+                                title: truncate("How to start content creation on youtube"),
+                                author: "Damzee"
+                            },
+                            {
+                                image: "img/BANTS EFE.jpg",
+                                category: "Politics",
+                                date: "Jan 12, 2023",
+                                author: "Efe",
+                                title: truncate("Politics today")
+                            },
+                            {
+                                image: "img/BANTS GAISE.jpg",
+                                category: "Gospel",
+                                date: "Jan 10, 2023",
+                                author: "Gaise Baba",
+                                title: truncate("Need for the presence of God")
+                            },
+                                ]
+
+                                let trending1 = document.querySelector(".trd")
+                                let trendingHTML = "";
+
+                                trending.forEach(tr => {
+                                    trendingHTML += `
+                                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                            <img style="width:110px; height:110px;" class="img-fluid" src="${tr.image}" alt="">
+                                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                                <div class="mb-2">
+                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="${tr.category}">${tr.category}</a>
+                                                    <a class="text-body" href="/category" data-link="${tr.date}"><small>${tr.date}</small></a>
+                                                </div>
+                                                 <a class="m-0 text-secondary" href="/category" data-link="${tr.author}">${tr.author}</a>
+                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${tr.title}">${tr.title}</a>
+                                            </div>
+                                        </div>
+                                    `;
+                                })
+
+                                trending1.innerHTML = trendingHTML
+                            </script>
                         </div>
                     </div>
                     <!-- Popular News End -->
@@ -494,17 +411,34 @@
                             <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
                         </div>
                         <div class="bg-white border border-top-0 p-3">
-                            <div class="d-flex flex-wrap m-n1">
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Politics</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Corporate</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Health</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Education</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Science</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Foods</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Travel</a>
+                            <div class="d-flex tg flex-wrap m-n1">
+                                <script>
+                                    let tags = [
+                                        {
+                                            name: "Politics"
+                                        },
+                                          {
+                                            name: "Business"
+                                        },
+                                          {
+                                            name: "Corporate"
+                                        },
+                                          {
+                                            name: "Business"
+                                        },
+                                    ]
+
+                                    let tags1 = document.querySelector(".tg")
+                                    let tagsHTML = "";
+
+                                    tags.forEach(tg => {
+                                        tagsHTML += `
+                                            <a href="/category" data-link="${tg.name}" class="btn btn-sm btn-outline-secondary m-1">${tg.name}</a>
+                                        `;
+                                    })
+
+                                    tags1.innerHTML = tagsHTML
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -534,76 +468,122 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular News</h5>
-                <div class="mb-3">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-                </div>
-                <div class="mb-3">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-                </div>
-                <div class="">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular</h5>
+                <div class="pop">
+                    <script>
+                        let popular = [
+                            {
+                                category: "Gospel",
+                                date: "Jan 10, 2023",
+                                author: "Gaise Baba",
+                                title: "Need for the presence of God"
+                            },
+                             {
+                                category: "Content creation",
+                                date: "Jan 11, 2023",
+                                title: "How to start content creation on youtube",
+                                author: "Damzee"
+                            },
+                                                         {
+                                category: "Content creation",
+                                date: "Jan 11, 2023",
+                                title: "How to start content creation on youtube",
+                                author: "Damzee"
+                            },
+                        ]
+    
+                        let popular1 = document.querySelector(".pop")
+                        let popularHTML = "";
+    
+                        popular.forEach(pp => {
+                            popularHTML += `
+                                <div class="mb-3">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="${pp.category}">${pp.category}</a>
+                                        <a class="text-body" href="/category" data-link="${pp.date}"><small>${pp.date}</small></a>
+                                    </div>
+                                    <a class="small text-body text-uppercase font-weight-medium" href="/content" data-link="${pp.title}">${pp.title}</a>
+                                </div>
+                            `;
+                        })
+    
+                        popular1.innerHTML = popularHTML
+                    </script>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
+              <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
-                <div class="m-n1">
-                    <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Entertainment</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Travel</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Lifestyle</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
+                <div class="m-n1 catft">
+                    <script>
+                        let footerCategoriesList = [
+                            {
+                                name: "Politics"
+                            },
+                            {
+                                name: "Business"
+                            },
+                              {
+                                name: "Corporate"
+                            },
+                              {
+                                name: "Health"
+                            },
+                              {
+                                name: "Education"
+                            },
+                        ]
+
+                        let footerCategoriesList1 = document.querySelector(".catft")
+                        let footerCategoriesListHTML = "";
+
+                        footerCategoriesList.forEach(ftl => {
+                            footerCategoriesListHTML += `
+                                <a href="/category" data-link="${ftl.name}" class="btn btn-sm btn-secondary m-1">${ftl.name}</a>
+                            `;
+                        })
+
+                        footerCategoriesList1.innerHTML = footerCategoriesListHTML
+                    </script>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Flickr Photos</h5>
-                <div class="row">
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-1.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-2.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-3.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-4.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-5.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-1.jpg" alt=""></a>
-                    </div>
+                <div class="row frl">
+                    <script>
+                        let flickr = [
+                            {
+                                image: "img/news-110x110-1.jpg"
+                            },
+                            {
+                                image: "img/news-110x110-2.jpg"
+                            },
+                            {
+                                image: "img/news-110x110-3.jpg"
+                            },
+                            {
+                                image: "img/news-110x110-4.jpg"
+                            },
+                            {
+                                image: "img/news-110x110-5.jpg"
+                            },
+                            {
+                                image: "img/news-110x110-1.jpg"
+                            },
+                        ]
+
+                        let flickr1 = document.querySelector(".frl")
+                        let flickrHTML = "";
+
+                        flickr.forEach(flrk => {
+                            flickrHTML += `
+                                <div class="col-4 mb-3">
+                                    <img class="w-100" src="${flrk.image}" alt="">
+                                </div>
+                            `;
+                        })
+
+                        flickr1.innerHTML = flickrHTML
+                    </script>
                 </div>
             </div>
         </div>

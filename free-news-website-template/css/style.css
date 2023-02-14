@@ -167,7 +167,7 @@ sup {
 }
 
 a {
-  color: #ffcc00;
+  color: #34ce57;
   text-decoration: none;
   background-color: transparent;
 }
@@ -2533,14 +2533,14 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #212529;
-  background-color: #ffcc00;
-  border-color: #ffcc00;
+  background-color: #34ce57;
+  border-color: #34ce57;
 }
 
 .btn-primary:hover {
   color: #212529;
-  background-color: #d9ad00;
-  border-color: #cca300;
+  background-color: #34ce57;
+  border-color: #34ce57;
 }
 
 .btn-primary:focus,
@@ -9955,7 +9955,7 @@ h6,
 
 .main-carousel .owl-dot.active {
   width: 40px;
-  background: #00FF00;
+  background: #00ff00;
 }
 
 .tranding-carousel .owl-nav {
@@ -10011,7 +10011,7 @@ h6,
   justify-content: space-between;
   background: #ffffff;
   border: 1px solid #dee2e6;
-  border-left: 5px solid #ffcc00;
+  border-left: 5px solid #34ce57;
 }
 
 .news-carousel .owl-nav {

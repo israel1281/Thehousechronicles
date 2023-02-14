@@ -4234,8 +4234,8 @@ input[type="button"].btn-block {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #495057;
-  background-color: #edeff4;
+  color: #fff;
+  background-color: #34ce57;
   border-color: #dee2e6 #dee2e6 #edeff4;
 }
 
@@ -4246,7 +4246,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #ffcc00;
+  background-color: #34ce57;
 }
 
 .nav-fill > .nav-link,
@@ -4994,19 +4994,19 @@ a.badge:focus {
 
 .badge-primary {
   color: #fff;
-  background-color: #000000;
+  background-color: #34ce57;
 }
 
 a.badge-primary:hover,
 a.badge-primary:focus {
   color: #212529;
-  background-color: #cca300;
+  background-color: #34ce57;
 }
 
 a.badge-primary:focus,
 a.badge-primary.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(255, 204, 0, 0.5);
+  box-shadow: 0 0 0 0.2rem #00ff00;
 }
 
 .badge-secondary {
@@ -9925,7 +9925,7 @@ h6,
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link.active {
   color: #1e2024;
-  background: #ffcc00;
+  background: #34ce57;
 }
 
 @media (max-width: 991.98px) {
@@ -9955,7 +9955,7 @@ h6,
 
 .main-carousel .owl-dot.active {
   width: 40px;
-  background: #000000;
+  background: #00FF00;
 }
 
 .tranding-carousel .owl-nav {

@@ -9,7 +9,7 @@ const categoryCtrl = {
           .status(400)
           .json({ msg: "Please provide the name payload " });
 
-      const checkName = await Category.findOne({ name: name });
+      const checkName = await Category.findOne({ name: name});
       if (checkName)
         return res
           .status(400)

@@ -26,6 +26,7 @@
 
     <!-- Owl Carousel JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bTs/SZz1b0m0k4L4ZQjhr6bKL6lLfSrpf6L/U9jvY8MjKIA5u5Zap/5vRLSzoKjhQxHRTK/0Mt9bGGNQ/LWO+Ng==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
@@ -108,45 +109,24 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
                         <div class="dropdown-menu catdr rounded-0 m-0">
                             <script>
-                                let dropdown = [
-                                    {
-                                        name: "Politics",
-                                        link: "/category"
-                                    },
-                                      {
-                                        name: "Business",
-                                        link: "/category"
-                                    },
-                                      {
-                                        name: "Corporate",
-                                        link: "/category"
-                                    },
-                                      {
-                                        name: "Health",
-                                        link: "/category"
-                                    },
-                                      {
-                                        name: "Education",
-                                        link: "/category"
-                                    }
-                                ]
+                                axios.get("api/v1/category")
+                                .then((response) => {
+                                    const dropdown = response.data.data;
+                                    const dropdown1 = document.querySelector(".catdr");
+                                    const dropdownHTML = dropdown.map(dpd => {
+                                        return `<a href="/category" class="dropdown-item router-nav" data-link="${dpd.name}">${dpd.name}</a>`;
+                                    }).join("");
+                                    dropdown1.innerHTML = dropdownHTML;
 
-                                let dropdown1 = document.querySelector(".catdr")
-                                let dropdownHTML = "";
-
-                                dropdown.forEach(dpd => {
-                                    dropdownHTML += `
-                                        <a href="${dpd.link}" class="dropdown-item router-nav" data-link="${dpd.name}">${dpd.name}</a>
-                                    `;
+                                    dropdown1.addEventListener("click", (event) => {
+                                        if (event.target.matches(".router-nav")) {
+                                            const link = event.target.getAttribute("data-link");
+                                            localStorage.setItem("selectedLink", link);
+                                        }
+                                    });
                                 })
-
-                                dropdown1.innerHTML = dropdownHTML
-                                
-                                  dropdown1.addEventListener("click", function(event) {
-                                    if (event.target.matches(".router-nav")) {
-                                    let link = event.target.getAttribute("data-link");
-                                    localStorage.setItem("selectedLink", link);
-                                    }
+                                .catch((error) => {
+                                    console.log(error.message);
                                 });
                             </script>
                         </div>

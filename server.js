@@ -2,8 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const multer = require("multer");
 
 const app = express();
+app.use(express.json());
 
 const URI = process.env.MONGODB_URL;
 mongoose.connect(
@@ -22,6 +24,24 @@ app.use(function (req, res, next) {
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   next();
+});
+
+app.use("/api/v1", require("./routes/categoryRoutes"));
+app.use("/api/v1", require("./routes/postRoutes"));
+const storage = multer.diskStorage({
+  destination: function (req, res, cb) {
+    cb(null, "./free-news-website-template/img");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + file.originalname);
+  },
+});
+
+const upload = multer({ storage });
+
+app.post("/api/v1/upload", upload.single("file"), function (req, res) {
+  const file = req.file;
+  res.status(200).json(file.filename);
 });
 
 app.get("/", (req, res) => {

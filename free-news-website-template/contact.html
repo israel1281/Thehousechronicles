@@ -107,8 +107,8 @@
                             }
                         });
                     </script>
-                    <a href="/" class="nav-item nav-link active router-nav">Home</a>
-                    <a href="/contact" class="nav-item nav-link router-nav">About us</a>
+                    <a href="/" class="nav-item nav-link router-nav">Home</a>
+                    <a href="/about" class="nav-item nav-link router-nav">About us</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
                         <div class="dropdown-menu catdr rounded-0 m-0">
@@ -156,7 +156,7 @@
                             </script>
                         </div>
                     </div>
-                    <a href="/contact" class="nav-item nav-link">Contact</a>
+                    <a href="/contact" class="nav-item active nav-link">Contact us</a>
                 </div>
                 <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control border-0" placeholder="Keyword">
@@ -182,7 +182,7 @@
                     <div class="bg-white border border-top-0 p-4 mb-3">
                         <div class="mb-4">
                             <h6 class="text-uppercase font-weight-bold">Contact Info</h6>
-                            <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+                            <p class="mb-4">Reach out to us with the form below </a>.</p>
 							<div class="mb-3">
                                 <div class="d-flex align-items-center mb-2">
                                     <i class="fa fa-map-marker-alt text-primary mr-2"></i>
@@ -216,7 +216,9 @@
                                     emailjs.sendForm('service_d67qevf', 'template_9pb2e1p', this)
                                         .then(function() {
                                             console.log('SUCCESS!');
+                                            alert("SUCCESS!. Message sent ")
                                         }, function(error) {
+                                            alert("error.message")
                                             console.log('FAILED...', error);
                                         });
                                 });

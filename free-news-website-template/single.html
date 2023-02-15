@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BizNews - Free News Website Template</title>
+    <title>Thehousechronicle - Post</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -18,11 +18,18 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <!-- Libraries Stylesheet
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> -->
+
+    <!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
+
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bTs/SZz1b0m0k4L4ZQjhr6bKL6lLfSrpf6L/U9jvY8MjKIA5u5Zap/5vRLSzoKjhQxHRTK/0Mt9bGGNQ/LWO+Ng==" crossorigin="anonymous"></script>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <script src="js/home.js"></script>
 </head>
 
 <body>
@@ -31,19 +38,7 @@
         <div class="row align-items-center bg-dark px-lg-5">
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-sm bg-dark p-0">
-                    <ul class="navbar-nav ml-n2">
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Monday, January 1, 2045</a>
-                        </li>
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Advertise</a>
-                        </li>
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body small" href="#">Login</a>
-                        </li>
+                    <ul class="navbar-nav ml-n2" id="navLinks">
                     </ul>
                 </nav>
             </div>
@@ -79,7 +74,7 @@
                 </a>
             </div>
             <div class="col-lg-8 text-center text-lg-right">
-                <a href="#"><img class="img-fluid" src="img/image2-add.jpeg" alt=""></a>
+                <a href="#"><img id="imageSlider" style="height:80px; width: 600px" class="img-fluid" src="img/ads-728x90.png" alt=""></a>
             </div>
         </div>
     </div>
@@ -97,18 +92,65 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="index.html" class="nav-item nav-link">Home</a>
-                    <a href="category.html" class="nav-item nav-link">Category</a>
-                    <a href="single.html" class="nav-item nav-link active">Single News</a>
+                    <script>
+                        window.addEventListener("click", function(event) {
+                            if (event.target.matches(".router-nav")) {
+                            let link = event.target.getAttribute("data-link");
+                            localStorage.setItem("selectedLink", link);
+                            }
+                        });
+                    </script>
+                    <a href="/" class="nav-item nav-link active router-nav">Home</a>
+                    <a href="/about" class="nav-item nav-link router-nav">About us</a>
+                    <a href="single.html" class="nav-item nav-link"></a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="#" class="dropdown-item">Menu item 1</a>
-                            <a href="#" class="dropdown-item">Menu item 2</a>
-                            <a href="#" class="dropdown-item">Menu item 3</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0">
+                            <script>
+                                let dropdown = [
+                                    {
+                                        name: "Politics",
+                                        link: "/category"
+                                    },
+                                      {
+                                        name: "Business",
+                                        link: "/category"
+                                    },
+                                      {
+                                        name: "Corporate",
+                                        link: "/category"
+                                    },
+                                      {
+                                        name: "Health",
+                                        link: "/category"
+                                    },
+                                      {
+                                        name: "Education",
+                                        link: "/category"
+                                    }
+                                ]
+
+                                let dropdown1 = document.querySelector(".catdr")
+                                let dropdownHTML = "";
+
+                                dropdown.forEach(dpd => {
+                                    dropdownHTML += `
+                                        <a href="${dpd.link}" class="dropdown-item router-nav" data-link="${dpd.name}">${dpd.name}</a>
+                                    `;
+                                })
+
+                                dropdown1.innerHTML = dropdownHTML
+                                
+                                  dropdown1.addEventListener("click", function(event) {
+                                    if (event.target.matches(".router-nav")) {
+                                    let link = event.target.getAttribute("data-link");
+                                    localStorage.setItem("selectedLink", link);
+                                    }
+                                });
+                            </script>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="/contact" class="nav-item nav-link">Contact</a>
                 </div>
                 <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control border-0" placeholder="Keyword">
@@ -133,9 +175,33 @@
                             <h4 class="m-0 text-uppercase font-weight-bold">Tranding</h4>
                         </div>
                         <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center bg-white border border-left-0"
-                            style="width: calc(100% - 180px); padding-right: 100px;">
-                            <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
-                            <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
+                            style="width: calc(100% - 180px); padding-right: 100px;" id="carousel-wrapper">
+                            <script>
+                                let trendingData = [
+                                    {
+                                        title: "How to start content creation on youtube"
+                                    },
+                                    {
+                                        title: "Politics today"
+                                    },
+                                    {
+                                        title: "Need for the presence of God"
+                                    },
+                                    {
+                                        title: "How to get hypnotised"
+                                    }
+                                ]
+                                
+                                let carouselWrapper = document.getElementById("carousel-wrapper")
+                                let carouselChild = `
+                                    <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">${trendingData[0].title}</a></div>
+                                    <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">${trendingData[1].title}</a></div>
+                                    <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">${trendingData[2].title}</a></div>
+                                    <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">${trendingData[3].title}</a></div>
+                                `;
+                                
+                                carouselWrapper.innerHTML = carouselChild
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -151,143 +217,87 @@
             <div class="row">
                 <div class="col-lg-8">
                     <!-- News Detail Start -->
-                    <div class="position-relative mb-3">
-                        <img class="img-fluid w-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
-                        <div class="bg-white border border-top-0 p-4">
-                            <div class="mb-3">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">Business</a>
-                                <a class="text-body" href="">Jan 01, 2045</a>
-                            </div>
-                            <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">Lorem ipsum dolor sit amet elit vitae porta diam...</h1>
-                            <p>Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum sit diam ut
+                    <div class="position-relative mb-3" id="post-wrapper">
+                        <script>
+                            let postDetailsData = {
+                                image: "img/IGNITION TEMPLATE.jpg",
+                                category: "Content creation",
+                                date: "Jan 01, 2045",
+                                title: "How to start content creation on youtube",
+                                p1: `Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum sit diam ut
                                 magna lorem. Nonumy vero labore lorem sanctus rebum et lorem magna kasd, stet
                                 amet magna accusam consetetur eirmod. Kasd accusam sit ipsum sadipscing et at at
                                 sanctus et. Ipsum sit gubergren dolores et, consetetur justo invidunt at et
                                 aliquyam ut et vero clita. Diam sea sea no sed dolores diam nonumy, gubergren
-                                sit stet no diam kasd vero.</p>
-                            <p>Voluptua est takimata stet invidunt sed rebum nonumy stet, clita aliquyam dolores
-                                vero stet consetetur elitr takimata rebum sanctus. Sit sed accusam stet sit
-                                nonumy kasd diam dolores, sanctus lorem kasd duo dolor dolor vero sit et. Labore
-                                ipsum duo sanctus amet eos et. Consetetur no sed et aliquyam ipsum justo et,
-                                clita lorem sit vero amet amet est dolor elitr, stet et no diam sit. Dolor erat
-                                justo dolore sit invidunt.</p>
-                            <h3 class="text-uppercase font-weight-bold mb-3">Lorem ipsum dolor sit amet elit</h3>
-                            <img class="img-fluid w-50 float-left mr-4 mb-2" src="img/news-800x500-1.jpg">
-                            <p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor
-                                invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam
-                                lorem sed. Magna amet sed rebum eos. Clita no magna no dolor erat diam tempor
-                                rebum consetetur, sanctus labore sed nonumy diam lorem amet eirmod. No at tempor
-                                sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat. Gubergren at
-                                lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at
-                                sadipscing stet. Clita dolor amet dolor ipsum vero ea ea eos. Invidunt sed diam
-                                dolores takimata dolor dolore dolore sit. Sit ipsum erat amet lorem et, magna
-                                sea at sed et eos. Accusam eirmod kasd lorem clita sanctus ut consetetur et. Et
-                                duo tempor sea kasd clita ipsum et.</p>
-                            <h5 class="text-uppercase font-weight-bold mb-3">Lorem ipsum dolor sit amet elit</h5>
-                            <img class="img-fluid w-50 float-right mr-4 mb-2" src="img/news-800x500-2.jpg">
-                            <p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor
-                                invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam
-                                lorem sed. Magna amet sed rebum eos. Clita no magna no dolor erat diam tempor
-                                rebum consetetur, sanctus labore sed nonumy diam lorem amet eirmod. No at tempor
-                                sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat. Gubergren at
-                                lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at
-                                sadipscing stet. Clita dolor amet dolor ipsum vero ea ea eos. Invidunt sed diam
-                                dolores takimata dolor dolore dolore sit. Sit ipsum erat amet lorem et, magna
-                                sea at sed et eos. Accusam eirmod kasd lorem clita sanctus ut consetetur et. Et
-                                duo tempor sea kasd clita ipsum et. Takimata kasd diam justo est eos erat
-                                aliquyam et ut.</p>
-                        </div>
-                        <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25" alt="">
-                                <span>John Doe</span>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <span class="ml-3"><i class="far fa-eye mr-2"></i>12345</span>
-                                <span class="ml-3"><i class="far fa-comment mr-2"></i>123</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- News Detail End -->
-
-                    <!-- Comment List Start -->
-                    <div class="mb-3">
-                        <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">3 Comments</h4>
-                        </div>
-                        <div class="bg-white border border-top-0 p-4">
-                            <div class="media mb-4">
-                                <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                                <div class="media-body">
-                                    <h6><a class="text-secondary font-weight-bold" href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
-                                    <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
-                                        accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
-                                    <button class="btn btn-sm btn-outline-secondary">Reply</button>
+                                sit stet no diam kasd vero.`,
+                                p2: `Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum sit diam ut
+                                magna lorem. Nonumy vero labore lorem sanctus rebum et lorem magna kasd, stet
+                                amet magna accusam consetetur eirmod. Kasd accusam sit ipsum sadipscing et at at
+                                sanctus et. Ipsum sit gubergren dolores et, consetetur justo invidunt at et
+                                aliquyam ut et vero clita. Diam sea sea no sed dolores diam nonumy, gubergren
+                                sit stet no diam kasd vero.`,
+                                p3: {
+                                    title: "Lorem ipsum dolor sit amet elit",
+                                    image: "img/IGNITION TEMPLATE.jpg",
+                                    p: `Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor
+                                        invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam
+                                        lorem sed. Magna amet sed rebum eos. Clita no magna no dolor erat diam tempor
+                                        rebum consetetur, sanctus labore sed nonumy diam lorem amet eirmod. No at tempor
+                                        sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat. Gubergren at
+                                        lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at
+                                        sadipscing stet. Clita dolor amet dolor ipsum vero ea ea eos. Invidunt sed diam
+                                        dolores takimata dolor dolore dolore sit. Sit ipsum erat amet lorem et, magna
+                                        sea at sed et eos. Accusam eirmod kasd lorem clita sanctus ut consetetur et. Et
+                                        duo tempor sea kasd clita ipsum et.`
+                                    },
+                                p4: {
+                                    title: "Lorem ipsum dolor sit amet elit",
+                                    image: "img/IGNITION TEMPLATE.jpg",
+                                    p: `Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor
+                                        invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam
+                                        lorem sed. Magna amet sed rebum eos. Clita no magna no dolor erat diam tempor
+                                        rebum consetetur, sanctus labore sed nonumy diam lorem amet eirmod. No at tempor
+                                        sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat. Gubergren at
+                                        lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at
+                                        sadipscing stet. Clita dolor amet dolor ipsum vero ea ea eos. Invidunt sed diam
+                                        dolores takimata dolor dolore dolore sit. Sit ipsum erat amet lorem et, magna
+                                        sea at sed et eos. Accusam eirmod kasd lorem clita sanctus ut consetetur et. Et
+                                        duo tempor sea kasd clita ipsum et.`
+                                    },
+                                    views: "1234"
+                            }
+                            
+                            let postWrapper = document.getElementById("post-wrapper");
+                            let postWrapperChild = `
+                                <img class="img-fluid w-100" src="${postDetailsData.image}" style="object-fit: cover;">
+                                <div class="bg-white border border-top-0 p-4">
+                                    <div class="mb-3">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                            href="">${postDetailsData.category}</a>
+                                        <a class="text-body" href="">${postDetailsData.date}</a>
+                                    </div>
+                                    <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">${postDetailsData.title}</h1>
+                                    <p>${postDetailsData.p1}</p>
+                                    <p>${postDetailsData.p2}</p>
+                                    <h3 class="text-uppercase font-weight-bold mb-3">${postDetailsData.p3.title}</h3>
+                                    <img class="img-fluid w-50 float-left mr-4 mb-2" src="${postDetailsData.p3.image}">
+                                    <p>${postDetailsData.p3.p}</p>
+                                    <h5 class="text-uppercase font-weight-bold mb-3">${postDetailsData.p4.title}</h5>
+                                    <img class="img-fluid w-50 float-right mr-4 mb-2" src="${postDetailsData.p3.image}">
+                                    <p>${postDetailsData.p3.p}</p>
                                 </div>
-                            </div>
-                            <div class="media">
-                                <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                                <div class="media-body">
-                                    <h6><a class="text-secondary font-weight-bold" href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
-                                    <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
-                                        accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
-                                    <button class="btn btn-sm btn-outline-secondary">Reply</button>
-                                    <div class="media mt-4">
-                                        <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1"
-                                            style="width: 45px;">
-                                        <div class="media-body">
-                                            <h6><a class="text-secondary font-weight-bold" href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
-                                            <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor
-                                                labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed
-                                                eirmod ipsum.</p>
-                                            <button class="btn btn-sm btn-outline-secondary">Reply</button>
-                                        </div>
+                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                                    <div class="d-flex align-items-center">
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="ml-3"><i class="far fa-eye mr-2"></i>${postDetailsData.views}</span>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            `;
+                            
+                            postWrapper.innerHTML = postWrapperChild
+                        </script>
                     </div>
-                    <!-- Comment List End -->
-
-                    <!-- Comment Form Start -->
-                    <div class="mb-3">
-                        <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Leave a comment</h4>
-                        </div>
-                        <div class="bg-white border border-top-0 p-4">
-                            <form>
-                                <div class="form-row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="name">Name *</label>
-                                            <input type="text" class="form-control" id="name">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="email">Email *</label>
-                                            <input type="email" class="form-control" id="email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="website">Website</label>
-                                    <input type="url" class="form-control" id="website">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="message">Message *</label>
-                                    <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
-                                </div>
-                                <div class="form-group mb-0">
-                                    <input type="submit" value="Leave a comment"
-                                        class="btn btn-primary font-weight-semi-bold py-2 px-3">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- Comment Form End -->
                 </div>
 
                 <div class="col-lg-4">
@@ -331,7 +341,8 @@
                             <h4 class="m-0 text-uppercase font-weight-bold">Advertisement</h4>
                         </div>
                         <div class="bg-white text-center border border-top-0 p-3">
-                            <a href=""><img class="img-fluid" src="img/news-800x500-2.jpg" alt=""></a>
+                            <!-- <a href=""><img class="img-fluid" src="img/BANTS WITH LAYZEE ELLA.jpg" alt=""></a> -->
+                            <video class="img-fluid" src="img/Are You With Me.mp4" controls autoplay muted preload="none"/>
                         </div>
                     </div>
                     <!-- Ads End -->
@@ -339,59 +350,67 @@
                     <!-- Popular News Start -->
                     <div class="mb-3">
                         <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Tranding News</h4>
+                            <h4 class="m-0 text-uppercase font-weight-bold">Trending</h4>
                         </div>
-                        <div class="bg-white border border-top-0 p-3">
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-1.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-2.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-3.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-4.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-5.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
+                        <div class="bg-white trd border border-top-0 p-3">
+                            <script>
+                                function truncate(text) {
+                                    if (text.length > 10)
+                                        return text = text.substring(0, 15) + "...";
+                                }
+                    
+                                let trending = [
+                                   {
+                                image: "img/BANTS WITH LAYZEE ELLA.jpg",
+                                category: "Bants",
+                                date: "Jan 12, 2023",
+                                author: "Layzee Ella",
+                                title: truncate("How to get hypnotised")
+                            },
+                             {
+                                image: "img/IGNITION TEMPLATE.jpg",
+                                category: "Content creation",
+                                date: "Jan 11, 2023",
+                                title: truncate("How to start content creation on youtube"),
+                                author: "Damzee"
+                            },
+                            {
+                                image: "img/BANTS EFE.jpg",
+                                category: "Politics",
+                                date: "Jan 12, 2023",
+                                author: "Efe",
+                                title: truncate("Politics today")
+                            },
+                            {
+                                image: "img/BANTS GAISE.jpg",
+                                category: "Gospel",
+                                date: "Jan 10, 2023",
+                                author: "Gaise Baba",
+                                title: truncate("Need for the presence of God")
+                            },
+                                ]
+
+                                let trending1 = document.querySelector(".trd")
+                                let trendingHTML = "";
+
+                                trending.forEach(tr => {
+                                    trendingHTML += `
+                                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                            <img style="width:110px; height:110px;" class="img-fluid" src="${tr.image}" alt="">
+                                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                                <div class="mb-2">
+                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="${tr.category}">${tr.category}</a>
+                                                    <a class="text-body" href="/category" data-link="${tr.date}"><small>${tr.date}</small></a>
+                                                </div>
+                                                 <a class="m-0 text-secondary" href="/category" data-link="${tr.author}">${tr.author}</a>
+                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${tr.title}">${tr.title}</a>
+                                            </div>
+                                        </div>
+                                    `;
+                                })
+
+                                trending1.innerHTML = trendingHTML
+                            </script>
                         </div>
                     </div>
                     <!-- Popular News End -->
@@ -402,14 +421,14 @@
                             <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
                         </div>
                         <div class="bg-white text-center border border-top-0 p-3">
-                            <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
+                            <p>Subscribe to our Newsletter to get update directly from us to your mail box</p>
                             <div class="input-group mb-2" style="width: 100%;">
                                 <input type="text" class="form-control form-control-lg" placeholder="Your Email">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary font-weight-bold px-3">Sign Up</button>
+                                    <button class="btn btn-primary font-weight-bold px-3">Subscribe</button>
                                 </div>
                             </div>
-                            <small>Lorem ipsum dolor sit amet elit</small>
+                            <small>please provide a valid email</small>
                         </div>
                     </div>
                     <!-- Newsletter End -->
@@ -420,17 +439,34 @@
                             <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
                         </div>
                         <div class="bg-white border border-top-0 p-3">
-                            <div class="d-flex flex-wrap m-n1">
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Politics</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Corporate</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Health</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Education</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Science</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Foods</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Travel</a>
+                            <div class="d-flex tg flex-wrap m-n1">
+                                <script>
+                                    let tags = [
+                                        {
+                                            name: "Politics"
+                                        },
+                                          {
+                                            name: "Business"
+                                        },
+                                          {
+                                            name: "Corporate"
+                                        },
+                                          {
+                                            name: "Business"
+                                        },
+                                    ]
+
+                                    let tags1 = document.querySelector(".tg")
+                                    let tagsHTML = "";
+
+                                    tags.forEach(tg => {
+                                        tagsHTML += `
+                                            <a href="/category" data-link="${tg.name}" class="btn btn-sm btn-outline-secondary m-1">${tg.name}</a>
+                                        `;
+                                    })
+
+                                    tags1.innerHTML = tagsHTML
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -460,76 +496,122 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular News</h5>
-                <div class="mb-3">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-                </div>
-                <div class="mb-3">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-                </div>
-                <div class="">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular</h5>
+                <div class="pop">
+                    <script>
+                        let popular = [
+                            {
+                                category: "Gospel",
+                                date: "Jan 10, 2023",
+                                author: "Gaise Baba",
+                                title: "Need for the presence of God"
+                            },
+                             {
+                                category: "Content creation",
+                                date: "Jan 11, 2023",
+                                title: "How to start content creation on youtube",
+                                author: "Damzee"
+                            },
+                                                         {
+                                category: "Content creation",
+                                date: "Jan 11, 2023",
+                                title: "How to start content creation on youtube",
+                                author: "Damzee"
+                            },
+                        ]
+    
+                        let popular1 = document.querySelector(".pop")
+                        let popularHTML = "";
+    
+                        popular.forEach(pp => {
+                            popularHTML += `
+                                <div class="mb-3">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="${pp.category}">${pp.category}</a>
+                                        <a class="text-body" href="/category" data-link="${pp.date}"><small>${pp.date}</small></a>
+                                    </div>
+                                    <a class="small text-body text-uppercase font-weight-medium" href="/content" data-link="${pp.title}">${pp.title}</a>
+                                </div>
+                            `;
+                        })
+    
+                        popular1.innerHTML = popularHTML
+                    </script>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
+           <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
-                <div class="m-n1">
-                    <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Entertainment</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Travel</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Lifestyle</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
+                <div class="m-n1 catft">
+                    <script>
+                        let footerCategoriesList = [
+                            {
+                                name: "Politics"
+                            },
+                            {
+                                name: "Business"
+                            },
+                              {
+                                name: "Corporate"
+                            },
+                              {
+                                name: "Health"
+                            },
+                              {
+                                name: "Education"
+                            },
+                        ]
+
+                        let footerCategoriesList1 = document.querySelector(".catft")
+                        let footerCategoriesListHTML = "";
+
+                        footerCategoriesList.forEach(ftl => {
+                            footerCategoriesListHTML += `
+                                <a href="/category" data-link="${ftl.name}" class="btn btn-sm btn-secondary m-1">${ftl.name}</a>
+                            `;
+                        })
+
+                        footerCategoriesList1.innerHTML = footerCategoriesListHTML
+                    </script>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
+             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Flickr Photos</h5>
-                <div class="row">
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-1.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-2.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-3.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-4.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-5.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-1.jpg" alt=""></a>
-                    </div>
+                <div class="row frl">
+                    <script>
+                        let flickr = [
+                             {
+                                image: "img/IGNITION TEMPLATE.jpg",
+                            },
+                            {
+                                image: "img/BANTS EFE.jpg",
+                            },
+                            {
+                                image: "img/BANTS GAISE.jpg",
+                            },
+                            {
+                                image: "img/BANTS WITH LAYZEE ELLA.jpg",
+                            },
+                             {
+                                image: "img/BANTS GAISE.jpg",
+                            },
+                            {
+                                image: "img/BANTS WITH LAYZEE ELLA.jpg",
+                            }
+                        ]
+
+                        let flickr1 = document.querySelector(".frl")
+                        let flickrHTML = "";
+
+                        flickr.forEach(flrk => {
+                            flickrHTML += `
+                                <div class="col-4 mb-3">
+                                    <img class="w-100" src="${flrk.image}" alt="">
+                                </div>
+                            `;
+                        })
+
+                        flickr1.innerHTML = flickrHTML
+                    </script>
                 </div>
             </div>
         </div>

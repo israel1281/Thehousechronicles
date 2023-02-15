@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Thehousechronicle - Post</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> -->
+
+    <!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
+
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bTs/SZz1b0m0k4L4ZQjhr6bKL6lLfSrpf6L/U9jvY8MjKIA5u5Zap/5vRLSzoKjhQxHRTK/0Mt9bGGNQ/LWO+Ng==" crossorigin="anonymous"></script>
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/home.js"></script>
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid d-none d-lg-block">
+        <div class="row align-items-center bg-dark px-lg-5">
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-sm bg-dark p-0">
+                    <ul class="navbar-nav ml-n2" id="navLinks">
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3 text-right d-none d-md-block">
+                <nav class="navbar navbar-expand-sm bg-dark p-0">
+                    <ul class="navbar-nav ml-auto mr-n2">
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="#"><small class="fab fa-twitter"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="#"><small class="fab fa-facebook-f"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="#"><small class="fab fa-linkedin-in"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="#"><small class="fab fa-instagram"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="#"><small class="fab fa-google-plus-g"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="#"><small class="fab fa-youtube"></small></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="row align-items-center bg-white py-3 px-lg-5">
+            <div class="col-lg-4">
+                <a href="index.html" class="navbar-brand p-0 d-none d-lg-block">
+                    <img src="img/THE HOUSE CHRONICLES-01.jpg" width="200px" />
+                </a>
+            </div>
+            <div class="col-lg-8 text-center text-lg-right">
+                <a href="#"><img id="imageSlider" style="height:80px; width: 600px" class="img-fluid" src="img/ads-728x90.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
+            <a href="index.html" class="navbar-brand d-block d-lg-none">
+                <img src="img/THE HOUSE CHRONICLES-03.png" width="200px" />
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <script>
+                        window.addEventListener("click", function(event) {
+                            if (event.target.matches(".router-nav")) {
+                            let link = event.target.getAttribute("data-link");
+                            localStorage.setItem("selectedLink", link);
+                            }
+                        });
+                    </script>
+                    <a href="/" class="nav-item nav-link router-nav">Home</a>
+                    <a href="/about" class="nav-item active nav-link router-nav">About us</a>
+                    <a href="single.html" class="nav-item nav-link"></a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0">
+                            <script>
+                                let dropdown = [
+                                    {
+                                        name: "Politics",
+                                        link: "/category"
+                                    },
+                                      {
+                                        name: "Business",
+                                        link: "/category"
+                                    },
+                                      {
+                                        name: "Corporate",
+                                        link: "/category"
+                                    },
+                                      {
+                                        name: "Health",
+                                        link: "/category"
+                                    },
+                                      {
+                                        name: "Education",
+                                        link: "/category"
+                                    }
+                                ]
+
+                                let dropdown1 = document.querySelector(".catdr")
+                                let dropdownHTML = "";
+
+                                dropdown.forEach(dpd => {
+                                    dropdownHTML += `
+                                        <a href="${dpd.link}" class="dropdown-item router-nav" data-link="${dpd.name}">${dpd.name}</a>
+                                    `;
+                                })
+
+                                dropdown1.innerHTML = dropdownHTML
+                                
+                                  dropdown1.addEventListener("click", function(event) {
+                                    if (event.target.matches(".router-nav")) {
+                                    let link = event.target.getAttribute("data-link");
+                                    localStorage.setItem("selectedLink", link);
+                                    }
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <a href="/contact" class="nav-item nav-link">Contact</a>
+                </div>
+                <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
+                    <input type="text" class="form-control border-0" placeholder="Keyword">
+                    <div class="input-group-append">
+                        <button class="input-group-text bg-primary text-dark border-0 px-3"><i
+                                class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Breaking News Start -->
+    <div class="container-fluid mt-5 mb-3 pt-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between">
+                        <div class="section-title border-right-0 mb-0" style="width: 280px;">
+                            <h4 class="m-0 text-uppercase font-weight-bold">ABOUT THC</h4>
+                        </div>
+                        <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center bg-white border border-left-0"
+                            style="width: calc(100% - 180px); padding-right: 100px;" id="carousel-wrapper">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breaking News End -->
+
+
+    <!-- News With Sidebar Start -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- News Detail Start -->
+                    <div class="position-relative mb-3" id="post-wrapper">
+                        <script>
+                            let postDetailsData = {
+                                image: "img/IGNITION TEMPLATE.jpg",
+                                title: " Overview",
+                                p1: `The House Chronicles is an online publication from New Label Production.
+                                    We document content from creatives of all types targeted at young - middle aged people in Africa .
+                                    `,
+                                p2: {
+                                    title: "Focus",
+                                    p: `The House Chronicles puts out a range of content targeted at diverse interests in young and middle aged people in Africa. The themes vary from inspirational, relatable, relaxed and upbeat content. 
+                                        Our content is produced in house and also in collaboration with fast rising and legacy stars in the creative industry in Nigeria.Our goal is to attract an audience who can explore a range of refreshing themes and topics that cater to their interests as individuals, professionals, and creatives.
+                                        Our Goal is to attract an audience who can explore a range of refreshing themes and topics that cater to their interests as individuals , professionals and creatives.
+                                        `
+                                    }
+                            }
+                            
+                            let postWrapper = document.getElementById("post-wrapper");
+                            let postWrapperChild = `
+                                <img class="img-fluid w-100" src="${postDetailsData?.image}" style="object-fit: cover;">
+                                <div class="bg-white border border-top-0 p-4">
+                                    <h3 class="mb-3 text-secondary text-uppercase font-weight-bold">${postDetailsData?.title}</h3>
+                                    <p>${postDetailsData?.p1}</p>
+                                     <h3 class="text-uppercase font-weight-bold mb-3">${postDetailsData?.p2?.title}</h3>
+                                    <p>${postDetailsData?.p2.p}</p>
+                                </div>
+                            `;
+                            
+                            postWrapper.innerHTML = postWrapperChild
+                        </script>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Social Follow Start -->
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
+                        </div>
+                        <div class="bg-white border border-top-0 p-3">
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
+                                <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Fans</span>
+                            </a>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
+                                <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Followers</span>
+                            </a>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
+                                <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Connects</span>
+                            </a>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
+                                <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Followers</span>
+                            </a>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #DC472E;">
+                                <i class="fab fa-youtube text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Subscribers</span>
+                            </a>
+                            <a href="" class="d-block w-100 text-white text-decoration-none" style="background: #055570;">
+                                <i class="fab fa-vimeo-v text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Followers</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Social Follow End -->
+
+                    <!-- Ads Start -->
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Advertisement</h4>
+                        </div>
+                        <div class="bg-white text-center border border-top-0 p-3">
+                            <!-- <a href=""><img class="img-fluid" src="img/BANTS WITH LAYZEE ELLA.jpg" alt=""></a> -->
+                            <video class="img-fluid" src="img/Are You With Me.mp4" controls autoplay muted preload="none"/>
+                        </div>
+                    </div>
+                    <!-- Ads End -->
+
+                    <!-- Popular News Start -->
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Trending</h4>
+                        </div>
+                        <div class="bg-white trd border border-top-0 p-3">
+                            <script>
+                                function truncate(text) {
+                                    if (text.length > 10)
+                                        return text = text.substring(0, 15) + "...";
+                                }
+                    
+                                let trending = [
+                                   {
+                                image: "img/BANTS WITH LAYZEE ELLA.jpg",
+                                category: "Bants",
+                                date: "Jan 12, 2023",
+                                author: "Layzee Ella",
+                                title: truncate("How to get hypnotised")
+                            },
+                             {
+                                image: "img/IGNITION TEMPLATE.jpg",
+                                category: "Content creation",
+                                date: "Jan 11, 2023",
+                                title: truncate("How to start content creation on youtube"),
+                                author: "Damzee"
+                            },
+                            {
+                                image: "img/BANTS EFE.jpg",
+                                category: "Politics",
+                                date: "Jan 12, 2023",
+                                author: "Efe",
+                                title: truncate("Politics today")
+                            },
+                            {
+                                image: "img/BANTS GAISE.jpg",
+                                category: "Gospel",
+                                date: "Jan 10, 2023",
+                                author: "Gaise Baba",
+                                title: truncate("Need for the presence of God")
+                            },
+                                ]
+
+                                let trending1 = document.querySelector(".trd")
+                                let trendingHTML = "";
+
+                                trending.forEach(tr => {
+                                    trendingHTML += `
+                                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                            <img style="width:110px; height:110px;" class="img-fluid" src="${tr.image}" alt="">
+                                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                                <div class="mb-2">
+                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="${tr.category}">${tr.category}</a>
+                                                    <a class="text-body" href="/category" data-link="${tr.date}"><small>${tr.date}</small></a>
+                                                </div>
+                                                 <a class="m-0 text-secondary" href="/category" data-link="${tr.author}">${tr.author}</a>
+                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${tr.title}">${tr.title}</a>
+                                            </div>
+                                        </div>
+                                    `;
+                                })
+
+                                trending1.innerHTML = trendingHTML
+                            </script>
+                        </div>
+                    </div>
+                    <!-- Popular News End -->
+
+                    <!-- Newsletter Start -->
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
+                        </div>
+                        <div class="bg-white text-center border border-top-0 p-3">
+                            <p>Subscribe to our Newsletter to get update directly from us to your mail box</p>
+                            <div class="input-group mb-2" style="width: 100%;">
+                                <input type="text" class="form-control form-control-lg" placeholder="Your Email">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary font-weight-bold px-3">Subscribe</button>
+                                </div>
+                            </div>
+                            <small>please provide a valid email</small>
+                        </div>
+                    </div>
+                    <!-- Newsletter End -->
+
+                    <!-- Tags Start -->
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
+                        </div>
+                        <div class="bg-white border border-top-0 p-3">
+                            <div class="d-flex tg flex-wrap m-n1">
+                                <script>
+                                    let tags = [
+                                        {
+                                            name: "Politics"
+                                        },
+                                          {
+                                            name: "Business"
+                                        },
+                                          {
+                                            name: "Corporate"
+                                        },
+                                          {
+                                            name: "Business"
+                                        },
+                                    ]
+
+                                    let tags1 = document.querySelector(".tg")
+                                    let tagsHTML = "";
+
+                                    tags.forEach(tg => {
+                                        tagsHTML += `
+                                            <a href="/category" data-link="${tg.name}" class="btn btn-sm btn-outline-secondary m-1">${tg.name}</a>
+                                        `;
+                                    })
+
+                                    tags1.innerHTML = tagsHTML
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tags End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- News With Sidebar End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
+        <div class="row py-4">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Get In Touch</h5>
+                <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
+                <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
+                <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square" href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular</h5>
+                <div class="pop">
+                    <script>
+                        let popular = [
+                            {
+                                category: "Gospel",
+                                date: "Jan 10, 2023",
+                                author: "Gaise Baba",
+                                title: "Need for the presence of God"
+                            },
+                             {
+                                category: "Content creation",
+                                date: "Jan 11, 2023",
+                                title: "How to start content creation on youtube",
+                                author: "Damzee"
+                            },
+                                                         {
+                                category: "Content creation",
+                                date: "Jan 11, 2023",
+                                title: "How to start content creation on youtube",
+                                author: "Damzee"
+                            },
+                        ]
+    
+                        let popular1 = document.querySelector(".pop")
+                        let popularHTML = "";
+    
+                        popular.forEach(pp => {
+                            popularHTML += `
+                                <div class="mb-3">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="${pp.category}">${pp.category}</a>
+                                        <a class="text-body" href="/category" data-link="${pp.date}"><small>${pp.date}</small></a>
+                                    </div>
+                                    <a class="small text-body text-uppercase font-weight-medium" href="/content" data-link="${pp.title}">${pp.title}</a>
+                                </div>
+                            `;
+                        })
+    
+                        popular1.innerHTML = popularHTML
+                    </script>
+                </div>
+            </div>
+           <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
+                <div class="m-n1 catft">
+                    <script>
+                        let footerCategoriesList = [
+                            {
+                                name: "Politics"
+                            },
+                            {
+                                name: "Business"
+                            },
+                              {
+                                name: "Corporate"
+                            },
+                              {
+                                name: "Health"
+                            },
+                              {
+                                name: "Education"
+                            },
+                        ]
+
+                        let footerCategoriesList1 = document.querySelector(".catft")
+                        let footerCategoriesListHTML = "";
+
+                        footerCategoriesList.forEach(ftl => {
+                            footerCategoriesListHTML += `
+                                <a href="/category" data-link="${ftl.name}" class="btn btn-sm btn-secondary m-1">${ftl.name}</a>
+                            `;
+                        })
+
+                        footerCategoriesList1.innerHTML = footerCategoriesListHTML
+                    </script>
+                </div>
+            </div>
+             <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Flickr Photos</h5>
+                <div class="row frl">
+                    <script>
+                        let flickr = [
+                             {
+                                image: "img/IGNITION TEMPLATE.jpg",
+                            },
+                            {
+                                image: "img/BANTS EFE.jpg",
+                            },
+                            {
+                                image: "img/BANTS GAISE.jpg",
+                            },
+                            {
+                                image: "img/BANTS WITH LAYZEE ELLA.jpg",
+                            },
+                             {
+                                image: "img/BANTS GAISE.jpg",
+                            },
+                            {
+                                image: "img/BANTS WITH LAYZEE ELLA.jpg",
+                            }
+                        ]
+
+                        let flickr1 = document.querySelector(".frl")
+                        let flickrHTML = "";
+
+                        flickr.forEach(flrk => {
+                            flickrHTML += `
+                                <div class="col-4 mb-3">
+                                    <img class="w-100" src="${flrk.image}" alt="">
+                                </div>
+                            `;
+                        })
+
+                        flickr1.innerHTML = flickrHTML
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
+        <p class="m-0 text-center">&copy; <a href="#">The House Chronicles</a>. All Rights Reserved. 
+		
+		<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+		<!-- Design by <a href="https://htmlcodex.com">HTML Codex</a></p> -->
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

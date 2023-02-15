@@ -38,6 +38,10 @@ app.get("/contact", (req, res) => {
   res.sendFile(path.join(__dirname, "free-news-website-template/contact.html"));
 });
 
+app.get("/about", (req, res) => {
+  res.sendFile(path.join(__dirname, "free-news-website-template/about.html"));
+});
+
 app.get("/content", (req, res) => {
   res.sendFile(path.join(__dirname, "free-news-website-template/single.html"));
 });

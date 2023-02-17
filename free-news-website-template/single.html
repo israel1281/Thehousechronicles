@@ -26,6 +26,7 @@
 
 <!-- Owl Carousel JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bTs/SZz1b0m0k4L4ZQjhr6bKL6lLfSrpf6L/U9jvY8MjKIA5u5Zap/5vRLSzoKjhQxHRTK/0Mt9bGGNQ/LWO+Ng==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
@@ -219,83 +220,38 @@
                     <!-- News Detail Start -->
                     <div class="position-relative mb-3" id="post-wrapper">
                         <script>
-                            let postDetailsData = {
-                                image: "img/IGNITION TEMPLATE.jpg",
-                                category: "Content creation",
-                                date: "Jan 01, 2045",
-                                title: "How to start content creation on youtube",
-                                p1: `Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum sit diam ut
-                                magna lorem. Nonumy vero labore lorem sanctus rebum et lorem magna kasd, stet
-                                amet magna accusam consetetur eirmod. Kasd accusam sit ipsum sadipscing et at at
-                                sanctus et. Ipsum sit gubergren dolores et, consetetur justo invidunt at et
-                                aliquyam ut et vero clita. Diam sea sea no sed dolores diam nonumy, gubergren
-                                sit stet no diam kasd vero.`,
-                                p2: `Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum sit diam ut
-                                magna lorem. Nonumy vero labore lorem sanctus rebum et lorem magna kasd, stet
-                                amet magna accusam consetetur eirmod. Kasd accusam sit ipsum sadipscing et at at
-                                sanctus et. Ipsum sit gubergren dolores et, consetetur justo invidunt at et
-                                aliquyam ut et vero clita. Diam sea sea no sed dolores diam nonumy, gubergren
-                                sit stet no diam kasd vero.`,
-                                p3: {
-                                    title: "Lorem ipsum dolor sit amet elit",
-                                    image: "img/IGNITION TEMPLATE.jpg",
-                                    p: `Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor
-                                        invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam
-                                        lorem sed. Magna amet sed rebum eos. Clita no magna no dolor erat diam tempor
-                                        rebum consetetur, sanctus labore sed nonumy diam lorem amet eirmod. No at tempor
-                                        sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat. Gubergren at
-                                        lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at
-                                        sadipscing stet. Clita dolor amet dolor ipsum vero ea ea eos. Invidunt sed diam
-                                        dolores takimata dolor dolore dolore sit. Sit ipsum erat amet lorem et, magna
-                                        sea at sed et eos. Accusam eirmod kasd lorem clita sanctus ut consetetur et. Et
-                                        duo tempor sea kasd clita ipsum et.`
-                                    },
-                                p4: {
-                                    title: "Lorem ipsum dolor sit amet elit",
-                                    image: "img/IGNITION TEMPLATE.jpg",
-                                    p: `Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor
-                                        invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam
-                                        lorem sed. Magna amet sed rebum eos. Clita no magna no dolor erat diam tempor
-                                        rebum consetetur, sanctus labore sed nonumy diam lorem amet eirmod. No at tempor
-                                        sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat. Gubergren at
-                                        lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at
-                                        sadipscing stet. Clita dolor amet dolor ipsum vero ea ea eos. Invidunt sed diam
-                                        dolores takimata dolor dolore dolore sit. Sit ipsum erat amet lorem et, magna
-                                        sea at sed et eos. Accusam eirmod kasd lorem clita sanctus ut consetetur et. Et
-                                        duo tempor sea kasd clita ipsum et.`
-                                    },
-                                    views: "1234"
+                        const fetchData = async (categoryName) => {
+                            try {
+                            const response = await axios.get(`/api/v1/post/63ecfa2d2cf798dba32be5b2`);
+                            return response.data.data;
+                            } catch (error) {
+                            console.log(error.message);
+                            return [];
                             }
-                            
-                            let postWrapper = document.getElementById("post-wrapper");
-                            let postWrapperChild = `
-                                <img class="img-fluid w-100" src="${postDetailsData.image}" style="object-fit: cover;">
-                                <div class="bg-white border border-top-0 p-4">
-                                    <div class="mb-3">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">${postDetailsData.category}</a>
-                                        <a class="text-body" href="">${postDetailsData.date}</a>
-                                    </div>
-                                    <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">${postDetailsData.title}</h1>
-                                    <p>${postDetailsData.p1}</p>
-                                    <p>${postDetailsData.p2}</p>
-                                    <h3 class="text-uppercase font-weight-bold mb-3">${postDetailsData.p3.title}</h3>
-                                    <img class="img-fluid w-50 float-left mr-4 mb-2" src="${postDetailsData.p3.image}">
-                                    <p>${postDetailsData.p3.p}</p>
-                                    <h5 class="text-uppercase font-weight-bold mb-3">${postDetailsData.p4.title}</h5>
-                                    <img class="img-fluid w-50 float-right mr-4 mb-2" src="${postDetailsData.p3.image}">
-                                    <p>${postDetailsData.p3.p}</p>
+                        };
+
+                        const renderData = (data) => {
+                            const postWrapper = document.getElementById("post-wrapper");
+                            const postWrapperChild = `
+                            <img class="img-fluid w-100" src="img/${data.image}" style="object-fit: cover;">
+                            <div class="bg-white border border-top-0 p-4">
+                                <div class="mb-3">
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        href="">${data.category.name}</a>
+                                    <a class="text-body" href="">${data.createdAt}</a>
                                 </div>
-                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                                    <div class="d-flex align-items-center">
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <span class="ml-3"><i class="far fa-eye mr-2"></i>${postDetailsData.views}</span>
-                                    </div>
-                                </div>
+                                <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">${data.title}</h1>
+                            </div>
                             `;
-                            
-                            postWrapper.innerHTML = postWrapperChild
+                            postWrapper.innerHTML = postWrapperChild;
+                        };
+
+                        const categoryName = localStorage.getItem("selectedLink");
+
+                        (async () => {
+                            const data = await fetchData(categoryName);
+                            renderData(data);
+                        })();
                         </script>
                     </div>
                 </div>

@@ -28,6 +28,11 @@ app.use(function (req, res, next) {
 
 app.use("/api/v1", require("./routes/categoryRoutes"));
 app.use("/api/v1", require("./routes/postRoutes"));
+app.use("/api/v1", require("./routes/bannerSliderRoutes"));
+app.use("/api/v1", require("./routes/bannerGridRoutes"));
+app.use("/api/v1", require("./routes/homeSectionRoutes"));
+app.use("/api/v1", require("./routes/trendingRoutes"));
+
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
     cb(null, "./free-news-website-template/img");

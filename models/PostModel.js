@@ -16,7 +16,7 @@ const postSchema = new mongoose.Schema(
     },
     category: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "categories",
+      ref: "category",
     },
   },
   {

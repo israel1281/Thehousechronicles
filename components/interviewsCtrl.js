@@ -1,49 +1,37 @@
-const BannerSlider = require("../models/bannerSliderModel");
+const Interviews = require("../models/interviewsModel");
 
-const bannerSliderCtrl = {
-  createBannerSlider: async (req, res) => {
+const interviewsCtrl = {
+  createInterviews: async (req, res) => {
     try {
       const { posts } = req.body;
       if (!posts)
         return res.status(400).json({ msg: "please provide the post payload" });
 
       const filter = {};
-      const bannerDocCount = await BannerSlider.countDocuments(filter);
+      const interviewsDocCount = await Interviews.countDocuments(filter);
 
-      if (bannerDocCount === 1)
+      if (interviewsDocCount === 1)
         return res.status(400).json({
           msg: "cant add extra bannerSlide. instead update the bannerslider",
         });
 
-      const newBannerSliderContent = new BannerSlider({
+      const newInterviews = new Interviews({
         posts,
       });
 
-      await newBannerSliderContent.save();
+      await newInterviews.save();
 
       res.status(200).json({
         status: "success",
-        message: "banner content successfully created",
+        message: "created successfully",
       });
     } catch (err) {
       res.status(500).json({ msg: err.message });
     }
   },
-  getBannerSliderContent: async (req, res) => {
+  getInterviewsDocById: async (req, res) => {
     try {
-      const bannerSlider = await BannerSlider.find().populate("posts");
-
-      res.json({
-        status: "success",
-        data: bannerSlider,
-      });
-    } catch (err) {
-      res.status(500).json({ msg: err.message });
-    }
-  },
-  getBannerSliderContentById: async (req, res) => {
-    try {
-      const bannerSlider = await BannerSlider.findById({
+      const interviews = await Interviews.findById({
         _id: req.params.id,
       }).populate({
         path: "posts",
@@ -52,23 +40,43 @@ const bannerSliderCtrl = {
         },
       });
 
-      res.status(200).json({
+      res.json({
         status: "success",
-        data: bannerSlider,
+        data: interviews,
       });
     } catch (err) {
       res.status(500).json({ msg: err.message });
     }
   },
-  updateBannerSliderContent: async (req, res) => {
+  getInterviewsDoc: async (req, res) => {
     try {
-      await BannerSlider.findByIdAndUpdate(
+      const interviews = await Interviews.find().populate({
+        path: "posts",
+        populate: {
+          path: "category",
+        },
+      });
+
+      res.json({
+        status: "success",
+        data: interviews,
+      });
+    } catch (err) {
+      res.status(500).json({ msg: err.message });
+    }
+  },
+  updateInterviews: async (req, res) => {
+    try {
+      await Interviews.findByIdAndUpdate(
         { _id: req.params.id },
-        { ...req.body }
+        {
+          ...req.body,
+        }
       );
 
       res.json({
-        message: "update successful",
+        status: "success",
+        message: "successfully updated",
       });
     } catch (err) {
       res.status(500).json({ msg: err.message });
@@ -76,4 +84,4 @@ const bannerSliderCtrl = {
   },
 };
 
-module.exports = bannerSliderCtrl;
+module.exports = interviewsCtrl;

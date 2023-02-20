@@ -47,22 +47,16 @@
                 <nav class="navbar navbar-expand-sm bg-dark p-0">
                     <ul class="navbar-nav ml-auto mr-n2">
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-twitter"></small></a>
+                            <a class="nav-link text-body" href="https://twitter.com/housechroniclex?s=21&t=Wr6MkJJxcnaV8luKZcU03A"><small class="fab fa-twitter"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-facebook-f"></small></a>
+                            <a class="nav-link text-body" href="https://www.facebook.com/TheHouseChronicles/"><small class="fab fa-facebook-f"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-linkedin-in"></small></a>
+                            <a class="nav-link text-body" href="https://www.instagram.com/thehousechronicles_/"><small class="fab fa-instagram"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-instagram"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-google-plus-g"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-youtube"></small></a>
+                            <a class="nav-link text-body" href="https://www.youtube.com/@thehouschronicles"><small class="fab fa-youtube"></small></a>
                         </li>
                     </ul>
                 </nav>
@@ -70,12 +64,12 @@
         </div>
         <div class="row align-items-center bg-white py-3 px-lg-5">
             <div class="col-lg-4">
-                <a href="index.html" class="navbar-brand p-0 d-none d-lg-block">
-                    <img src="img/THE HOUSE CHRONICLES-01.jpg" width="200px" />
+                <a href="/" class="navbar-brand p-0 d-none d-lg-block">
+                    <img src="img/THE HOUSE CHRONICLES-01.jpg" width="200px" alt="The House Chronicles Logo"/>
                 </a>
             </div>
             <div class="col-lg-8 text-center text-lg-right">
-                <a href="#"><img id="imageSlider" style="height:80px; width: 600px" class="img-fluid" src="img/ads-728x90.png" alt=""></a>
+                <a href="#"><img id="imageSlider" style="height:80px; width: 600px" class="img-fluid" src="img/ads-728x90.png" alt="Advertisement"></a>
             </div>
         </div>
     </div>
@@ -85,7 +79,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
-            <a href="index.html" class="navbar-brand d-block d-lg-none">
+            <a href="/" class="navbar-brand d-block d-lg-none">
                 <img src="img/THE HOUSE CHRONICLES-03.png" width="200px" />
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -103,63 +97,60 @@
                     </script>
                     <a href="/" class="nav-item nav-link active router-nav">Home</a>
                     <a href="/about" class="nav-item nav-link router-nav">About us</a>
-                    <a href="single.html" class="nav-item nav-link"></a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Publication</a>
                         <div class="dropdown-menu catdr rounded-0 m-0">
-                            <script>
-                                let dropdown = [
-                                    {
-                                        name: "Politics",
-                                        link: "/category"
-                                    },
-                                      {
-                                        name: "Business",
-                                        link: "/category"
-                                    },
-                                      {
-                                        name: "Corporate",
-                                        link: "/category"
-                                    },
-                                      {
-                                        name: "Health",
-                                        link: "/category"
-                                    },
-                                      {
-                                        name: "Education",
-                                        link: "/category"
-                                    }
-                                ]
-
-                                let dropdown1 = document.querySelector(".catdr")
-                                let dropdownHTML = "";
-
-                                dropdown.forEach(dpd => {
-                                    dropdownHTML += `
-                                        <a href="${dpd.link}" class="dropdown-item router-nav" data-link="${dpd.name}">${dpd.name}</a>
-                                    `;
-                                })
-
-                                dropdown1.innerHTML = dropdownHTML
-                                
-                                  dropdown1.addEventListener("click", function(event) {
-                                    if (event.target.matches(".router-nav")) {
-                                    let link = event.target.getAttribute("data-link");
-                                    localStorage.setItem("selectedLink", link);
-                                    }
-                                });
-                            </script>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Satire">Satire</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Story time">Story time</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Did you know">Did you know</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Interview publications">Interview publications</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-News">News</a>
                         </div>
                     </div>
-                    <a href="/contact" class="nav-item nav-link">Contact</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Bantz</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0">
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-bantz video">Bantz Videos</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-bantz articles">Bantz Articles</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">FNATH</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0">
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-FNATH videos">FNATH videos</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-FNATH articles">FNATH articles</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">HOTS</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0">
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-HOTS videos">HOTS videos</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-HOTS articles">HOTS articles</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ignition</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0">
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Ignition practicals">Ignition practicals</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Ignition mojo">Ignition mojo</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Expose</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0">
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Expose movies">Expose movies</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Critics and chill">Critics and chill</a>
+                        </div>
+                    </div>
+                    <a href="/about" class="nav-item nav-link router-nav" data-link="category-Shalaye">Shalaye</a>
                 </div>
-                <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
+                <!-- <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control border-0" placeholder="Keyword">
                     <div class="input-group-append">
                         <button class="input-group-text bg-primary text-dark border-0 px-3"><i
                                 class="fa fa-search"></i></button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </nav>
     </div>
@@ -173,7 +164,7 @@
                 <div class="col-12">
                     <div class="d-flex justify-content-between">
                         <div class="section-title border-right-0 mb-0" style="width: 180px;">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Tranding</h4>
+                            <h4 class="m-0 text-uppercase font-weight-bold">Content</h4>
                         </div>
                         <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center bg-white border border-left-0"
                             style="width: calc(100% - 180px); padding-right: 100px;" id="carousel-wrapper">
@@ -192,13 +183,13 @@
                                         title: "How to get hypnotised"
                                     }
                                 ]
+                                    // <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">${trendingData[0].title}</a></div>
+                                    // <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">${trendingData[1].title}</a></div>
+                                    // <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">${trendingData[2].title}</a></div>
+                                    // <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">${trendingData[3].title}</a></div>
                                 
                                 let carouselWrapper = document.getElementById("carousel-wrapper")
                                 let carouselChild = `
-                                    <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">${trendingData[0].title}</a></div>
-                                    <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">${trendingData[1].title}</a></div>
-                                    <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">${trendingData[2].title}</a></div>
-                                    <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">${trendingData[3].title}</a></div>
                                 `;
                                 
                                 carouselWrapper.innerHTML = carouselChild
@@ -222,7 +213,7 @@
                         <script>
                         const fetchData = async (categoryName) => {
                             try {
-                            const response = await axios.get(`/api/v1/post/63ecfa2d2cf798dba32be5b2`);
+                            const response = await axios.get(`/api/v1/post/${categoryName}`);
                             return response.data.data;
                             } catch (error) {
                             console.log(error.message);
@@ -263,29 +254,21 @@
                             <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
                         </div>
                         <div class="bg-white border border-top-0 p-3">
-                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
+                            <a href="https://www.facebook.com/TheHouseChronicles/" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
                                 <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                                <span class="font-weight-medium">12,345 Fans</span>
+                                <span class="font-weight-medium">Facebook</span>
                             </a>
-                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
+                            <a href="https://twitter.com/housechroniclex?s=21&t=Wr6MkJJxcnaV8luKZcU03A" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
                                 <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                                <span class="font-weight-medium">12,345 Followers</span>
+                                <span class="font-weight-medium">Twitter</span>
                             </a>
-                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
-                                <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                                <span class="font-weight-medium">12,345 Connects</span>
-                            </a>
-                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
+                            <a href="https://www.instagram.com/thehousechronicles_/" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
                                 <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                                <span class="font-weight-medium">12,345 Followers</span>
+                                <span class="font-weight-medium">Instagram</span>
                             </a>
-                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #DC472E;">
+                            <a href="https://www.youtube.com/@thehouschronicles" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #DC472E;">
                                 <i class="fab fa-youtube text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                                <span class="font-weight-medium">12,345 Subscribers</span>
-                            </a>
-                            <a href="" class="d-block w-100 text-white text-decoration-none" style="background: #055570;">
-                                <i class="fab fa-vimeo-v text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                                <span class="font-weight-medium">12,345 Followers</span>
+                                <span class="font-weight-medium">Youtube</span>
                             </a>
                         </div>
                     </div>
@@ -298,13 +281,13 @@
                         </div>
                         <div class="bg-white text-center border border-top-0 p-3">
                             <!-- <a href=""><img class="img-fluid" src="img/BANTS WITH LAYZEE ELLA.jpg" alt=""></a> -->
-                            <video class="img-fluid" src="img/Are You With Me.mp4" controls autoplay muted preload="none"/>
+                            <video class="img-fluid" src="img/thehousead.mp4" controls autoplay muted preload="none"/>
                         </div>
                     </div>
                     <!-- Ads End -->
 
                     <!-- Popular News Start -->
-                    <div class="mb-3">
+                     <div class="mb-3">
                         <div class="section-title mb-0">
                             <h4 class="m-0 text-uppercase font-weight-bold">Trending</h4>
                         </div>
@@ -314,58 +297,42 @@
                                     if (text.length > 10)
                                         return text = text.substring(0, 15) + "...";
                                 }
-                    
-                                let trending = [
-                                   {
-                                image: "img/BANTS WITH LAYZEE ELLA.jpg",
-                                category: "Bants",
-                                date: "Jan 12, 2023",
-                                author: "Layzee Ella",
-                                title: truncate("How to get hypnotised")
-                            },
-                             {
-                                image: "img/IGNITION TEMPLATE.jpg",
-                                category: "Content creation",
-                                date: "Jan 11, 2023",
-                                title: truncate("How to start content creation on youtube"),
-                                author: "Damzee"
-                            },
-                            {
-                                image: "img/BANTS EFE.jpg",
-                                category: "Politics",
-                                date: "Jan 12, 2023",
-                                author: "Efe",
-                                title: truncate("Politics today")
-                            },
-                            {
-                                image: "img/BANTS GAISE.jpg",
-                                category: "Gospel",
-                                date: "Jan 10, 2023",
-                                author: "Gaise Baba",
-                                title: truncate("Need for the presence of God")
-                            },
-                                ]
+                                
+                                function formatDate(dateString) {
+                                    const date = new Date(dateString);
+                                    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                                    return date.toLocaleDateString('en-US', options);
+                                }
+                                
+                                axios.get("/api/v1/trending/63ee4abf8bc0356ed82feee7")
+                                .then((response) => {
+                                    let trending = response.data.data.posts
+                                    let trending1 = document.querySelector(".trd")
+                                    let trendingHTML = "";
 
-                                let trending1 = document.querySelector(".trd")
-                                let trendingHTML = "";
-
-                                trending.forEach(tr => {
-                                    trendingHTML += `
-                                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                            <img style="width:110px; height:110px;" class="img-fluid" src="${tr.image}" alt="">
-                                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                                <div class="mb-2">
-                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="${tr.category}">${tr.category}</a>
-                                                    <a class="text-body" href="/category" data-link="${tr.date}"><small>${tr.date}</small></a>
+                                    trending.forEach(tr => {
+                                        trendingHTML += `
+                                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                                <img style="width:110px; height:110px;" class="img-fluid" src="img/${tr.image}" alt="">
+                                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                                    <div class="mb-2">
+                                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${tr.category.name}">${tr.category.name}</a>
+                                                        <div class="text-body" href="/content" data-link="createdAt-${tr._id}"><small>${formatDate(tr.createdAt)}</small></div>
+                                                    </div>
+                                                    <a class="m-0 text-secondary" href="/category" data-link="author-${tr.author}">${tr.author}</a>
+                                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${tr._id}">${truncate(tr.title)}</a>
                                                 </div>
-                                                 <a class="m-0 text-secondary" href="/category" data-link="${tr.author}">${tr.author}</a>
-                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${tr.title}">${tr.title}</a>
                                             </div>
-                                        </div>
-                                    `;
-                                })
+                                        `;
+                                    })
 
-                                trending1.innerHTML = trendingHTML
+                                    trending1.innerHTML = trendingHTML
+                                })
+                                .catch((error) => {
+                                    console.log(error.message)
+                                })
+    
+
                             </script>
                         </div>
                     </div>
@@ -396,33 +363,29 @@
                         </div>
                         <div class="bg-white border border-top-0 p-3">
                             <div class="d-flex tg flex-wrap m-n1">
-                                <script>
-                                    let tags = [
-                                        {
-                                            name: "Politics"
-                                        },
-                                          {
-                                            name: "Business"
-                                        },
-                                          {
-                                            name: "Corporate"
-                                        },
-                                          {
-                                            name: "Business"
-                                        },
-                                    ]
-
-                                    let tags1 = document.querySelector(".tg")
-                                    let tagsHTML = "";
-
-                                    tags.forEach(tg => {
-                                        tagsHTML += `
-                                            <a href="/category" data-link="${tg.name}" class="btn btn-sm btn-outline-secondary m-1">${tg.name}</a>
+                            <script>
+                                axios.get("api/v1/category")
+                                .then((response) => {
+                                    const dropdown = response.data.data;
+                                    const dropdown1 = document.querySelector(".tg");
+                                    const dropdownHTML = dropdown.map(dpd => {
+                                        return `
+                                            <a href="/category" data-link="category-${dpd.name}" class="btn btn-sm btn-outline-secondary m-1">${dpd.name}</a>
                                         `;
-                                    })
+                                    }).join("");
+                                    dropdown1.innerHTML = dropdownHTML;
 
-                                    tags1.innerHTML = tagsHTML
-                                </script>
+                                    dropdown1.addEventListener("click", (event) => {
+                                        if (event.target.matches(".router-nav")) {
+                                            const link = event.target.getAttribute("data-link");
+                                            localStorage.setItem("selectedLink", link);
+                                        }
+                                    });
+                                })
+                                .catch((error) => {
+                                    console.log(error.message);
+                                });
+                            </script>
                             </div>
                         </div>
                     </div>
@@ -439,103 +402,100 @@
         <div class="row py-4">
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Get In Touch</h5>
-                <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
+                <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>7 NIGSON VILLA Ologolo White sand beach estate, Lekki Penninsula II 106104, Lekki, Lagos</p>
+                <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>+2348184173893</p>
                 <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>info@example.com</p>
                 <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
                 <div class="d-flex justify-content-start">
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square" href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular</h5>
-                <div class="pop">
-                    <script>
-                        let popular = [
-                            {
-                                category: "Gospel",
-                                date: "Jan 10, 2023",
-                                author: "Gaise Baba",
-                                title: "Need for the presence of God"
-                            },
-                             {
-                                category: "Content creation",
-                                date: "Jan 11, 2023",
-                                title: "How to start content creation on youtube",
-                                author: "Damzee"
-                            },
-                                                         {
-                                category: "Content creation",
-                                date: "Jan 11, 2023",
-                                title: "How to start content creation on youtube",
-                                author: "Damzee"
-                            },
-                        ]
-    
-                        let popular1 = document.querySelector(".pop")
-                        let popularHTML = "";
-    
-                        popular.forEach(pp => {
-                            popularHTML += `
-                                <div class="mb-3">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="${pp.category}">${pp.category}</a>
-                                        <a class="text-body" href="/category" data-link="${pp.date}"><small>${pp.date}</small></a>
-                                    </div>
-                                    <a class="small text-body text-uppercase font-weight-medium" href="/content" data-link="${pp.title}">${pp.title}</a>
-                                </div>
-                            `;
-                        })
-    
-                        popular1.innerHTML = popularHTML
-                    </script>
-                </div>
-            </div>
-           <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
-                <div class="m-n1 catft">
-                    <script>
-                        let footerCategoriesList = [
-                            {
-                                name: "Politics"
-                            },
-                            {
-                                name: "Business"
-                            },
-                              {
-                                name: "Corporate"
-                            },
-                              {
-                                name: "Health"
-                            },
-                              {
-                                name: "Education"
-                            },
-                        ]
-
-                        let footerCategoriesList1 = document.querySelector(".catft")
-                        let footerCategoriesListHTML = "";
-
-                        footerCategoriesList.forEach(ftl => {
-                            footerCategoriesListHTML += `
-                                <a href="/category" data-link="${ftl.name}" class="btn btn-sm btn-secondary m-1">${ftl.name}</a>
-                            `;
-                        })
-
-                        footerCategoriesList1.innerHTML = footerCategoriesListHTML
-                    </script>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://twitter.com/housechroniclex?s=21&t=Wr6MkJJxcnaV8luKZcU03A"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.facebook.com/TheHouseChronicles/"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.instagram.com/thehousechronicles_/"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square" href="https://www.youtube.com/@thehouschronicles"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
              <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular</h5>
+                <div class="pop">
+                    <script>
+                        
+                        function truncate(text) {
+                            if (text.length > 10)
+                                return text = text.substring(0, 15) + "...";
+                        }
+                        
+                        function formatDate(dateString) {
+                            const date = new Date(dateString);
+                            const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                            return date.toLocaleDateString('en-US', options);
+                        }
+                        
+                        axios.get("/api/v1/trending/63ee4abf8bc0356ed82feee7")
+                            .then((response) => {
+                                let trending = response.data.data.posts
+                                let popular1 = document.querySelector(".pop")
+                                let popularHTML = "";
+            
+                                trending.forEach(pp => {
+                                    popularHTML += `
+                                        <div class="mb-3">
+                                            <div class="mb-2">
+                                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${pp.category.name}">${pp.category.name}</a>
+                                                <div class="text-body" href="/category" data-link="createdAt-${pp.createdAt}"><small>${formatDate(pp.createdAt)}</small></div>
+                                            </div>
+                                            <a class="small text-body text-uppercase font-weight-medium" href="/content" data-link="${pp._id}">${truncate(pp.title)}</a>
+                                        </div>
+                                    `;
+                                })
+            
+                                popular1.innerHTML = popularHTML
+    
+                            })
+                            .catch((error) => {
+                                console.log(error.message)
+                            })
+    
+                    </script>
+                </div>
+            </div>
+              <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
+                <div class="m-n1 catft">
+                    <script>
+                        axios.get("api/v1/category")
+                            .then((response) => {
+                                const dropdown = response.data.data;
+                                
+                                let footerCategoriesList1 = document.querySelector(".catft")
+                                let footerCategoriesListHTML = "";
+
+                                dropdown.map(ftl => {
+                                    footerCategoriesListHTML += `
+                                        <a href="/category" data-link="category-${ftl.name}" class="btn btn-sm btn-secondary m-1">${ftl.name}</a>
+                                    `;
+                                })
+
+                                footerCategoriesList1.innerHTML = footerCategoriesListHTML
+
+                                dropdown1.addEventListener("click", (event) => {
+                                    if (event.target.matches(".router-nav")) {
+                                        const link = event.target.getAttribute("data-link");
+                                        localStorage.setItem("selectedLink", link);
+                                    }
+                                });
+                            })
+                            .catch((error) => {
+                                console.log(error.message);
+                            });
+
+                    </script>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Flickr Photos</h5>
                 <div class="row frl">
                     <script>
                         let flickr = [
-                             {
+                           {
                                 image: "img/IGNITION TEMPLATE.jpg",
                             },
                             {

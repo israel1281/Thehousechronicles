@@ -36,7 +36,7 @@ window.addEventListener("load", function () {
     var links = [
       { title: formattedDate, href: "#" },
       // { title: "Advertise", href: "#" },
-      { title: "Contact us", href: "#" },
+      { title: "Contact us", href: "/contact" },
       // { title: "Login", href: "#" }
     ];
 

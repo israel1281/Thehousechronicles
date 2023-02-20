@@ -9934,7 +9934,7 @@ h6,
   }
 }
 
-.main-carousel .owl-dots {
+.owl-carousel .owl-dots {
   position: absolute;
   top: 30px;
   right: 25px;
@@ -9943,7 +9943,7 @@ h6,
   text-align: right;
 }
 
-.main-carousel .owl-dot {
+.owl-carousel .owl-dot {
   position: relative;
   display: inline-block;
   margin: 0 5px;
@@ -9953,7 +9953,7 @@ h6,
   transition: 0.5s;
 }
 
-.main-carousel .owl-dot.active {
+.owl-carousel .owl-dot.active {
   width: 40px;
   background: #00ff00;
 }

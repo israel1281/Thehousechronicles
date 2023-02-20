@@ -99,40 +99,59 @@
                     <a href="/" class="nav-item nav-link active router-nav">Home</a>
                     <a href="/about" class="nav-item nav-link router-nav">About us</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Publication</a>
                         <div class="dropdown-menu catdr rounded-0 m-0">
-                            <script>
-                                axios.get("api/v1/category")
-                                .then((response) => {
-                                    const dropdown = response.data.data;
-                                    const dropdown1 = document.querySelector(".catdr");
-                                    const dropdownHTML = dropdown.map(dpd => {
-                                        return `<a href="/category" class="dropdown-item router-nav" data-link="category-${dpd.name}">${dpd.name}</a>`;
-                                    }).join("");
-                                    dropdown1.innerHTML = dropdownHTML;
-
-                                    dropdown1.addEventListener("click", (event) => {
-                                        if (event.target.matches(".router-nav")) {
-                                            const link = event.target.getAttribute("data-link");
-                                            localStorage.setItem("selectedLink", link);
-                                        }
-                                    });
-                                })
-                                .catch((error) => {
-                                    console.log(error.message);
-                                });
-                            </script>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Satire">Satire</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Story time">Story time</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Did you know">Did you know</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Interview publications">Interview publications</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-News">News</a>
                         </div>
                     </div>
-                    <a href="/contact" class="nav-item nav-link">Contact</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Bantz</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0">
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-bantz video">Bantz Videos</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-bantz articles">Bantz Articles</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">FNATH</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0">
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-FNATH videos">FNATH videos</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-FNATH articles">FNATH articles</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">HOTS</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0">
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-HOTS videos">HOTS videos</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-HOTS articles">HOTS articles</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ignition</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0">
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Ignition practicals">Ignition practicals</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Ignition mojo">Ignition mojo</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Expose</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0">
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Expose movies">Expose movies</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Critics and chill">Critics and chill</a>
+                        </div>
+                    </div>
+                    <a href="/about" class="nav-item nav-link router-nav" data-link="category-Shalaye">Shalaye</a>
                 </div>
-                <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
+                <!-- <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control border-0" placeholder="Keyword">
                     <div class="input-group-append">
                         <button class="input-group-text bg-primary text-dark border-0 px-3"><i
                                 class="fa fa-search"></i></button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </nav>
     </div>
@@ -142,7 +161,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-7 px-0">
-                <div class="owl-carousel main-carousel position-relative">
+                <div class="owl-carousel position-relative">
                         <script>
                             axios.get("/api/v1/banner-slider/63ed0b602185147519b25bb3")
                             .then((response) => {
@@ -150,6 +169,12 @@
                                 
                                 let carousel = document.querySelector(".owl-carousel");
                                 let carouselHTML = "";
+                                
+                            function formatDate(dateString) {
+                                const date = new Date(dateString);
+                                const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                                return date.toLocaleDateString('en-US', options);
+                            }
 
                                 bannerSlider.forEach(news => {
                                     carouselHTML += `
@@ -158,11 +183,11 @@
                                             <div class="overlay">
                                                 <div class="mb-2">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                                        href="/category" data-link="${news.category.name}">${news.category.name}</a>
-                                                    <a class="text-white" href="/content" data-link="${news.title}">${news.date}</a>
+                                                        href="/category" data-link="category-${news.category.name}">${news.category.name}</a>
+                                                    <div class="text-white" href="/content" data-link="">${formatDate(news.createdAt)}</div>
                                                 </div>
-                                                <a class="m-0 text-white" href="/category" data-link="${news.author}">${news.author}</a>
-                                                <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/content" data-link="${news.title}">${news.title}</a>
+                                                <a class="m-0 text-white" href="/category" data-link="author-${news.author}">${news.author}</a>
+                                                <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/content" data-link="${news._id}">${news.title}</a>
                                             </div>
                                         </div>
                                     `;
@@ -174,21 +199,12 @@
                                     $('.owl-carousel').owlCarousel({
                                         loop:true,
                                         margin:10,
+                                        center: true,
                                         nav:false,
                                         dots:true,
                                         autoplay:true,
-                                        autoplayTimeout:5000,
-                                        responsive:{
-                                            0:{
-                                                items:1
-                                            },
-                                            600:{
-                                                items:2
-                                            },
-                                            1000:{
-                                                items:3
-                                            }
-                                        }
+                                        smartSpeed: 1500,
+                                        items: 1
                                     });
                                 });
                                 
@@ -259,66 +275,99 @@
     <div class="container-fluid pt-5 mb-3">
         <div class="container">
             <div class="section-title">
-                <h4 class="m-0 text-uppercase font-weight-bold">Featured</h4>
+                <h4 class="m-0 text-uppercase font-weight-bold">Interviews</h4>
             </div>
-            <div class="owl-carousel news-carousel carousel-item-4 position-relative">
+            <div class="owl-carousel news-carousel position-relative">
                 <script>
-                    let featured = [
-                            {
-                                image: "img/IGNITION TEMPLATE.jpg",
-                                category: "Content creation",
-                                date: "Jan 11, 2023",
-                                title: "How to start content creation on youtube",
-                                author: "Damzee"
-                            },
-                            {
-                                image: "img/BANTS EFE.jpg",
-                                category: "Politics",
-                                date: "Jan 12, 2023",
-                                author: "Efe",
-                                title: "Politics today"
-                            },
-                            {
-                                image: "img/BANTS GAISE.jpg",
-                                category: "Gospel",
-                                date: "Jan 10, 2023",
-                                author: "Gaise Baba",
-                                title: "Need for the presence of God"
-                            },
-                            {
-                                image: "img/BANTS WITH LAYZEE ELLA.jpg",
-                                category: "Bants",
-                                date: "Jan 12, 2023",
-                                author: "Layzee Ella",
-                                title: "How to get hypnotised"
-                            }
-                    ]
-
-                    let featured1 = document.querySelector(".news-carousel")
-                    let carouselHTML3 = "";
-
-                    featured.forEach(ft => {
-                        carouselHTML3 += `
-                            <div class="position-relative overflow-hidden" style="height: 300px;">
-                                <img class="img-fluid h-100" src="${ft.image}" style="object-fit: cover;">
+                    const fetchInterviews = async () => {
+                        try {
+                            const response = await axios.get('/api/v1/interviews/63f0043c5cfa8c74bd3fa62b');
+                            const featured = response.data.data.posts;
+                            const featuredCarousel = document.querySelector('.news-carousel');
+                            let carouselHTML = '';
+                            
+                            const formatDate = (dateString) => {
+                            const date = new Date(dateString);
+                            const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                            return date.toLocaleDateString('en-US', options);
+                            };
+                            
+                            featured.forEach((ft) => {
+                            carouselHTML += `
+                                <div class="position-relative overflow-hidden" style="height: 300px;">
+                                <img class="img-fluid h-100" src="img/${ft.image}" style="object-fit: cover;">
                                 <div class="overlay">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="#" data-link="${ft.category}">${ft.category}</a>
-                                        <a class="text-white" href="/content" data-link="${ft.title}"><small>${ft.date}</small></a>
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        href="#" data-link="category-${ft.category.name}">${ft.category.name}</a>
+                                    <div class="text-white" href="/content" data-link="${ft.title}"><small>${formatDate(ft.createdAt)}</small></div>
                                     </div>
-                                      <a class="m-0 text-white" href="/category" data-link="${ft.author}">${ft.author}</a>
-                                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/content" data-link="${ft.title}">${ft.title}</a>
+                                    <a class="m-0 text-white" href="/category" data-link="author-${ft.author}">${ft.author}</a>
+                                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/content" data-link="${ft._id}">${ft.title}</a>
                                 </div>
-                            </div>
-                        `;
-                    })
+                                </div>
+                            `;
+                            });
+                            
+                            featuredCarousel.innerHTML = carouselHTML;
+                            
+                            $(document).ready(() => {
+                                // Initialize the owlCarousel
+                                $('.news-carousel').owlCarousel({
+                                    autoplay: true,
+                                    smartSpeed: 1000,
+                                    margin: 30,
+                                    dots: false,
+                                    loop: true,
+                                    nav: false,
+                                    responsive: {
+                                        0: { items: 1 },
+                                        576: { items: 1 },
+                                        768: { items: 2 },
+                                        992: { items: 3 },
+                                        1200: { items: 4 }
+                                    }
+                                });
 
-                    featured1.innerHTML = carouselHTML3
-                    window.addEventListener("click", function(event) {
-                        let link = event.target.getAttribute("data-link");
-                        localStorage.setItem("selectedLink", link);
-                    });
+                                // Update the owlCarousel configuration on window resize
+                                $(window).resize(() => {
+                                    let windowWidth = $(window).width();
+
+                                    if (windowWidth < 576) {
+                                        $('.news-carousel').trigger('destroy.owl.carousel');
+                                        $('.news-carousel').addClass('off');
+                                    } else {
+                                        $('.news-carousel.off').removeClass('off');
+                                        $('.news-carousel').owlCarousel({
+                                            autoplay: true,
+                                            smartSpeed: 1000,
+                                            margin: 30,
+                                            dots: false,
+                                            loop: true,
+                                            nav: false,
+                                            responsive: {
+                                                0: { items: 1 },
+                                                576: { items: 1 },
+                                                768: { items: 2 },
+                                                992: { items: 3 },
+                                                1200: { items: 4 }
+                                            }
+                                        });
+                                    }
+                                });
+                            })
+                            
+                            window.addEventListener('click', (event) => {
+                            const link = event.target.getAttribute('data-link');
+                            localStorage.setItem('selectedLink', link);
+                            });
+                            
+                        } catch (error) {
+                            console.error(error.message);
+                        }
+                        };
+
+                        fetchInterviews();
                 </script>
             </div>
         </div>
@@ -597,7 +646,7 @@
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Get In Touch</h5>
                 <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>7 NIGSON VILLA Ologolo White sand beach estate, Lekki Penninsula II 106104, Lekki, Lagos</p>
-                <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>+234 9011 978 588</p>
+                <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>+2348184173893</p>
                 <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>info@example.com</p>
                 <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
                 <div class="d-flex justify-content-start">

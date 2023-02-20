@@ -3,9 +3,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const multer = require("multer");
+const cors = require("cors");
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const URI = process.env.MONGODB_URL;
 mongoose.connect(
@@ -17,21 +19,13 @@ mongoose.connect(
   }
 );
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
-
 app.use("/api/v1", require("./routes/categoryRoutes"));
 app.use("/api/v1", require("./routes/postRoutes"));
 app.use("/api/v1", require("./routes/bannerSliderRoutes"));
 app.use("/api/v1", require("./routes/bannerGridRoutes"));
 app.use("/api/v1", require("./routes/homeSectionRoutes"));
 app.use("/api/v1", require("./routes/trendingRoutes"));
+app.use("/api/v1", require("./routes/interviewsRoutes"));
 
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {

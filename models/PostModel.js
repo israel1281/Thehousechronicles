@@ -12,7 +12,7 @@ const postSchema = new mongoose.Schema(
       type: String,
     },
     content: {
-      type: Object,
+      type: String,
     },
     category: {
       type: mongoose.Schema.Types.ObjectId,

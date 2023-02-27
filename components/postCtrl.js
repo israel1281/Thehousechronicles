@@ -50,7 +50,7 @@ class APIfeatures {
 const postCtrl = {
   createPost: async (req, res) => {
     try {
-      const { title, author, image, category } = req.body;
+      const { title, author, image, content, category } = req.body;
       if (!title && !author && !image)
         return res
           .status(400)
@@ -60,6 +60,7 @@ const postCtrl = {
         title,
         author,
         image,
+        content,
         category,
       });
 

@@ -29,6 +29,18 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- Customized Bootstrap Stylesheet -->
+    <style>
+        .spinner-border {
+            margin: 0 0.5rem;
+        }
+        .btn-loading {
+            pointer-events: none;
+            position: relative;
+        }
+        .btn-loading .spinner-border {
+            color: #000000;
+        }
+    </style>
     <link href="css/style.css" rel="stylesheet">
     <script src="js/home.js"></script>
 </head>
@@ -70,7 +82,7 @@
             </a>
         </div>
         <div class="col-lg-8 text-center text-lg-right">
-            <a href="#"><img id="imageSlider" style="height:80px; width: 600px" class="img-fluid" src="img/ads-728x90.png" alt="Advertisement"></a>
+            <!-- <a href="#"><img id="imageSlider" style="height:80px; width: 600px" class="img-fluid" src="img/ads-728x90.png" alt="Advertisement"></a> -->
         </div>
     </div>
 </div>
@@ -81,7 +93,7 @@
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
             <a href="/" class="navbar-brand d-block d-lg-none">
-                <img src="img/THE HOUSE CHRONICLES-03.png" width="200px" />
+                <img src="img/THE HOUSE CHRONICLES-02.jpg" width="200px" />
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -97,53 +109,54 @@
                         });
                     </script>
                     <a href="/" class="nav-item nav-link active router-nav">Home</a>
-                    <a href="/about" class="nav-item nav-link router-nav">About us</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Publication</a>
-                        <div class="dropdown-menu catdr rounded-0 m-0">
-                            <a href="/category" class="dropdown-item router-nav" data-link="category-Satire">Satire</a>
-                            <a href="/category" class="dropdown-item router-nav" data-link="category-Story time">Story time</a>
-                            <a href="/category" class="dropdown-item router-nav" data-link="category-Did you know">Did you know</a>
-                            <a href="/category" class="dropdown-item router-nav" data-link="category-Interview publications">Interview publications</a>
-                            <a href="/category" class="dropdown-item router-nav" data-link="category-News">News</a>
+                        <a href="#" class="nav-link dropdown-toggle" id="publication-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Publication</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0 bg-dark" aria-labelledby="publication-dropdown">
+                            <a href="#" class="dropdown-item router-nav publication-category-link" data-link="category-Satire">Satire</a>
+                            <a href="#" class="dropdown-item router-nav publication-category-link" data-link="category-Story time">Story time</a>
+                            <a href="#" class="dropdown-item router-nav publication-category-link" data-link="category-Did you know">Did you know</a>
+                            <a href="#" class="dropdown-item router-nav publication-category-link" data-link="category-Interview publications">Interview publications</a>
+                            <a href="#" class="dropdown-item router-nav publication-category-link" data-link="category-News">News</a>
+                        </div>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const publicationLinks = document.querySelectorAll('.publication-category-link');
+                            const categoryPath = '/category';
+
+                            publicationLinks.forEach(function(link) {
+                            link.addEventListener('click', function(event) {
+                                event.preventDefault();
+                                window.location.href = categoryPath
+                            });
+                            });
+                        });
+                    </script>
+                    <a href="/category" class="nav-item nav-link router-nav" data-link="category-bantz">Bantz</a>
+                    <div class="nav-item dropdown">
+                        <a href="/category" class="nav-link dropdown-toggle" data-toggle="dropdown">The House</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0 bg-dark">
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-FNATH videos">Friday Nights</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-HOTS videos">The Streets</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Bantz</a>
-                        <div class="dropdown-menu catdr rounded-0 m-0">
-                            <a href="/category" class="dropdown-item router-nav" data-link="category-bantz video">Bantz Videos</a>
-                            <a href="/category" class="dropdown-item router-nav" data-link="category-bantz articles">Bantz Articles</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">FNATH</a>
-                        <div class="dropdown-menu catdr rounded-0 m-0">
-                            <a href="/category" class="dropdown-item router-nav" data-link="category-FNATH videos">FNATH videos</a>
-                            <a href="/category" class="dropdown-item router-nav" data-link="category-FNATH articles">FNATH articles</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">HOTS</a>
-                        <div class="dropdown-menu catdr rounded-0 m-0">
-                            <a href="/category" class="dropdown-item router-nav" data-link="category-HOTS videos">HOTS videos</a>
-                            <a href="/category" class="dropdown-item router-nav" data-link="category-HOTS articles">HOTS articles</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ignition</a>
-                        <div class="dropdown-menu catdr rounded-0 m-0">
+                        <a href="/category" class="nav-link dropdown-toggle" data-toggle="dropdown">Ignition</a>
+                        <div class="dropdown-menu catdr rounded-0 m-0 bg-dark">
                             <a href="/category" class="dropdown-item router-nav" data-link="category-Ignition practicals">Ignition practicals</a>
                             <a href="/category" class="dropdown-item router-nav" data-link="category-Ignition mojo">Ignition mojo</a>
                         </div>
                     </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Expose</a>
+                    <a href="/about" class="nav-item nav-link router-nav" data-link="category-Satire">True Love</a>
+                    <a href="/about" class="nav-item nav-link router-nav">About us</a>
+                    <!-- <div class="nav-item dropdown">
+                        <a href="/category" class="nav-link dropdown-toggle" data-toggle="dropdown">EXPOSÉ</a>
                         <div class="dropdown-menu catdr rounded-0 m-0">
-                            <a href="/category" class="dropdown-item router-nav" data-link="category-Expose movies">Expose movies</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Expose movies">EXPOSÉ movies</a>
                             <a href="/category" class="dropdown-item router-nav" data-link="category-Critics and chill">Critics and chill</a>
                         </div>
-                    </div>
-                    <a href="/about" class="nav-item nav-link router-nav" data-link="category-Shalaye">Shalaye</a>
+                    </div> -->
+                    <!-- <a href="/about" class="nav-item nav-link router-nav" data-link="category-Shalaye">Shalaye</a> -->
                 </div>
                 <!-- <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control border-0" placeholder="Keyword">
@@ -275,7 +288,7 @@
     <div class="container-fluid pt-5 mb-3">
         <div class="container">
             <div class="section-title">
-                <h4 class="m-0 text-uppercase font-weight-bold">Interviews</h4>
+                <h4 class="m-0 text-uppercase font-weight-bold">Thehousechronicles Network</h4>
             </div>
             <div class="owl-carousel news-carousel position-relative">
                 <script>
@@ -320,13 +333,7 @@
                                     dots: false,
                                     loop: true,
                                     nav: false,
-                                    responsive: {
-                                        0: { items: 1 },
-                                        576: { items: 1 },
-                                        768: { items: 2 },
-                                        992: { items: 3 },
-                                        1200: { items: 4 }
-                                    }
+                                    items: 1
                                 });
 
                                 // Update the owlCarousel configuration on window resize
@@ -342,16 +349,10 @@
                                             autoplay: true,
                                             smartSpeed: 1000,
                                             margin: 30,
-                                            dots: false,
+                                            dots: true,
                                             loop: true,
                                             nav: false,
-                                            responsive: {
-                                                0: { items: 1 },
-                                                576: { items: 1 },
-                                                768: { items: 2 },
-                                                992: { items: 3 },
-                                                1200: { items: 4 }
-                                            }
+                                            items: 1
                                         });
                                     }
                                 });
@@ -384,7 +385,12 @@
                     
                     function truncate(text) {
                         if (text.length > 10)
-                            return text = text.substring(0, 15) + "...";
+                            return text = text.substring(0, 20) + "...";
+                    }
+                    
+                    function truncateContent(text) {
+                        if (text.length > 10)
+                            return text = text.substring(0, 40) + "...";
                     }
                         
                         axios.get("/api/v1/home-section")
@@ -400,80 +406,78 @@
                                 return date.toLocaleDateString('en-US', options);
                             }
 
-                            categoriesSection.forEach(catS => {
+                            categoriesSection?.forEach(catS => {
                                 categoriesSectionHTML += `
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="section-title">
-                                            <h4 class="m-0 text-uppercase font-weight-bold">${catS.category.name}</h4>
-                                            <a class="text-secondary font-weight-medium text-decoration-none" href="/category" data-link="category-${catS.category.name}">View All</a>
+                                            <h4 class="m-0 text-uppercase font-weight-bold">${catS?.category?.name}</h4>
+                                            <a class="text-secondary font-weight-medium text-decoration-none" href="/category" data-link="category-${catS?.category?.name}">View All</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <div class="row news-lg mx-0 mb-3">
+                                        <div class="row news-lg mx-0 mb-3" style="height: 80%;">
                                             <div class="col-md-6 px-0">
-                                                <img class="img-fluid" src="img/${catS.posts[0].image}" style="object-fit: cover;">
+                                                <img class="img-fluid" src="img/${catS?.posts[0]?.image}" style="object-fit: fixed;">
                                             </div>
                                             <div class="col-md-6 d-flex flex-column border bg-white px-0">
                                                 <div class=" p-4">
                                                     <div class="mb-2">
                                                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                                            href="/category" data-link="category-${catS.posts[0].category.name}">${catS.posts[0].category.name}</a>
-                                                        <div class="text-body" data-link="createdAt-${catS.posts[0]._id}"><small>${formatDate(catS.posts[0].createdAt)}</small></div>
+                                                            href="/category" data-link="category-${catS?.posts[0]?.category?.name}">${catS?.posts[0]?.category?.name}</a>
+                                                        <div class="text-body" data-link="createdAt-${catS?.posts[0]?._id}"><small>${formatDate(catS?.posts[0]?.createdAt)}</small></div>
                                                     </div>
-                                                    <a class=" d-block mb-1 text-secondary" href="/category" data-link="author-${catS.posts[0].author}">${catS.posts[0].author}</a>
-                                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS.posts[0]._id}">${catS.posts[0].title}</a>
-                                                    <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                                        rebum clita rebum dolor stet amet justo</p>
+                                                    <a class=" d-block mb-1 text-secondary" href="/category" data-link="author-${catS?.posts[0]?.author}">${catS?.posts[0]?.author}</a>
+                                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS?.posts[0]?._id}">${catS?.posts[0]?.title}</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
-                                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                            <img class="img-fluid" style="width: 110px; height: 110px;" src="img/${catS.posts[1].image}" alt="">
-                                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                        <div class="d-flex align-items-center bg-white mb-3">
+                                            <img class="img-fluid" style="width: 110px;" src="img/${catS?.posts[1]?.image}" alt="">
+                                            <div class="w-100 h-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
                                                 <div class="mb-2">
-                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS.posts[1].category.name}">${catS.posts[1].category.name}</a>
-                                                    <div class="text-body" data-link="createdAt-${catS.posts[1]._id}"><small>${formatDate(catS.posts[1].createdAt)}</small></div>
+                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS?.posts[1]?.category?.name}">${catS?.posts[1]?.category?.name}</a>
+                                                    <div class="text-body" data-link="createdAt-${catS?.posts[1]?._id}"><small>${formatDate(catS?.posts[1]?.createdAt)}</small></div>
                                                 </div>
-                                                <a class=" d-block mb-1 text-secondary" href="/category" data-link="author-${catS.posts[1].author}">${catS.posts[1].author}</a>
-                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS.posts[1]._id}">${truncate(catS.posts[1].title)}</a>
+                                                <a class=" d-block mb-1 text-secondary" href="/category" data-link="author-${catS?.posts[1]?.author}">${catS?.posts[1]?.author}</a>
+                                                <a class="h6 m-2 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS?.posts[1]?._id}">${catS?.posts[1]?.title}</a>
                                             </div>
                                         </div>
-                                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                            <img class="img-fluid" style="width: 110px; height: 110px;" src="img/${catS.posts[2].image}" alt="">
-                                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                        <div class="d-flex align-items-center bg-white mb-3">
+                                            <img class="img-fluid" style="width: 110px" src="img/${catS?.posts[2]?.image}" alt="">
+                                            <div class="w-100 h-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
                                                 <div class="mb-2">
-                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS.posts[2].category.name}">${catS.posts[2].category.name}</a>
-                                                    <div class="text-body" data-link="createdAt-${catS.posts[2]._id}"><small>${formatDate(catS.posts[2].createdAt)}</small></div>
+                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS?.posts[2]?.category?.name}">${catS?.posts[2]?.category?.name}</a>
+                                                    <div class="text-body" data-link="createdAt-${catS?.posts[2]?._id}"><small>${formatDate(catS?.posts[2]?.createdAt)}</small></div>
                                                 </div>
-                                                <a class=" d-block mb-1 text-secondary" href="/category" data-link="author-${catS.posts[2].author}">${catS.posts[2].author}</a>
-                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS.posts[2]._id}">${truncate(catS.posts[2].title)}</a>
+                                                <a class=" d-block mb-1 text-secondary" href="/category" data-link="author-${catS?.posts[2]?.author}">${catS?.posts[2]?.author}</a>
+                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS?.posts[2]?._id}">${catS?.posts[2]?.title}</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
-                                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                            <img class="img-fluid" style="width: 110px; height: 110px;" src="img/${catS.posts[3].image}" alt="">
-                                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                        <div class="d-flex align-items-center bg-white mb-3">
+                                            <img class="img-fluid" style="width: 110px;" src="img/${catS?.posts[3]?.image}" alt="">
+                                            <div class="w-100 h-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
                                                 <div class="mb-2">
-                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS.posts[3].category.name}">${catS.posts[3].category.name}</a>
-                                                    <div class="text-body" data-link="createdAt-${catS.posts[3]._id}"><small>${formatDate(catS.posts[3].createdAt)}</small></div>
+                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS?.posts[3]?.category?.name}">${catS?.posts[3]?.category?.name}</a>
+                                                    <div class="text-body" data-link="createdAt-${catS?.posts[3]?._id}"><small>${formatDate(catS?.posts[3]?.createdAt)}</small></div>
                                                 </div>
-                                                <a class=" d-block mb-1 text-secondary" href="/category" data-link="author-${catS.posts[3].author}">${catS.posts[3].author}</a>
-                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS.posts[3]._id}">${truncate(catS.posts[3].title)}</a>
+                                                <a class=" d-block mb-1 text-secondary" href="/category" data-link="author-${catS?.posts[3]?.author}">${catS?.posts[3]?.author}</a>
+                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS?.posts[3]?._id}">${catS?.posts[3]?.title}</a>
                                             </div>
                                         </div>
-                                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                            <img class="img-fluid" style="width: 110px; height: 110px;" src="img/${catS.posts[4].image}" alt="">
-                                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                        <div class="d-flex align-items-center bg-white mb-3">
+                                            <img class="img-fluid" style="width: 110px;" src="img/${catS?.posts[4]?.image}" alt="">
+                                            <div class="w-100 h-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
                                                 <div class="mb-2">
-                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS.posts[4].category.name}">${catS.posts[4].category.name}</a>
-                                                    <div class="text-body" data-link="createdAt-${catS.posts[4]._id}"><small>${formatDate(catS.posts[4].createdAt)}</small></div>
+                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS?.posts[4]?.category?.name}">${catS?.posts[4]?.category?.name}</a>
+                                                    <div class="text-body" data-link="createdAt-${catS?.posts[4]?._id}"><small>${formatDate(catS?.posts[4]?.createdAt)}</small></div>
                                                 </div>
-                                                <a class=" d-block mb-1 text-secondary" href="/category" data-link="author-${catS.posts[4].author}">${catS.posts[4].author}</a>
-                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS.posts[4]._id}">${truncate(catS.posts[4].title)}</a>
+                                                <a class=" d-block mb-1 text-secondary" href="/category" data-link="author-${catS?.posts[4]?.author}">${catS?.posts[4]?.author}</a>
+                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS?.posts[4]?._id}">${catS?.posts[4]?.title}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -581,21 +585,62 @@
                     <!-- Popular News End -->
 
                     <!-- Newsletter Start -->
-                    <div class="mb-3">
-                        <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
-                        </div>
-                        <div class="bg-white text-center border border-top-0 p-3">
-                            <p>Subscribe to our Newsletter to get update directly from us to your mail box</p>
-                            <div class="input-group mb-2" style="width: 100%;">
-                                <input type="text" class="form-control form-control-lg" placeholder="Your Email">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary font-weight-bold px-3">Subscribe</button>
-                                </div>
+                        <div class="mb-3">
+                            <div class="section-title mb-0">
+                                <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
                             </div>
-                            <small>please provide a valid email</small>
+                            <div class="bg-white text-center border border-top-0 p-3">
+                                <p>Subscribe to our Newsletter to get updates directly to your mailbox</p>
+                                <form id="my-form" action="/api/v1/subscribe" method="POST">
+                                    <div class="input-group mb-2" style="width: 100%;">
+                                        <input type="email" name="email" class="form-control form-control-lg" placeholder="Your Email" required>
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-primary font-weight-bold px-3">
+                                                <span>Subscribe</span>
+                                                <span class="spinner-border spinner-border-sm d-none"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <small>Please provide a valid email address</small>
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                        <script>
+                            const form = document.querySelector('#my-form');
+                            const submitButton = form.querySelector('button[type="submit"]');
+
+                            form.addEventListener('submit', (event) => {
+                                event.preventDefault(); // prevent the default form submission behavior
+
+                                // show the loading spinner and disable the submit button
+                                submitButton.disabled = true;
+                                submitButton.classList.add('btn-loading');
+                                submitButton.querySelector('span').classList.add('d-none');
+                                submitButton.querySelector('.spinner-border').classList.remove('d-none');
+
+                                // perform an AJAX request to the server to submit the form data
+                                axios.post('/api/v1/subscribe', new FormData(form))
+                                    .then((response) => {
+                                        if (response.status === 200) {
+                                            // show an alert message if the form was successfully submitted
+                                            alert('Thank you for subscribing to our newsletter!');
+                                            form.reset(); // clear the form inputs
+                                        }
+                                    })
+                                    .catch((error) => {
+                                        console.error(error);
+                                        // show an error message if there was a network error
+                                        alert(error.response.data.msg)
+                                    })
+                                    .finally(() => {
+                                        // hide the loading spinner and enable the submit button
+                                        submitButton.disabled = false;
+                                        submitButton.classList.remove('btn-loading');
+                                        submitButton.querySelector('.spinner-border').classList.add('d-none');
+                                        submitButton.querySelector('span').classList.remove('d-none');
+                                    });
+                            });
+                        </script>
                     <!-- Newsletter End -->
 
                     <!-- Tags Start -->
@@ -647,7 +692,7 @@
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Get In Touch</h5>
                 <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>7 NIGSON VILLA Ologolo White sand beach estate, Lekki Penninsula II 106104, Lekki, Lagos</p>
                 <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>+2348184173893</p>
-                <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>thc@newlabelproduction.com</p>
                 <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
                 <div class="d-flex justify-content-start">
                     <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://twitter.com/housechroniclex?s=21&t=Wr6MkJJxcnaV8luKZcU03A"><i class="fab fa-twitter"></i></a>

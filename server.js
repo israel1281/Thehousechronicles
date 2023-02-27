@@ -26,6 +26,7 @@ app.use("/api/v1", require("./routes/bannerGridRoutes"));
 app.use("/api/v1", require("./routes/homeSectionRoutes"));
 app.use("/api/v1", require("./routes/trendingRoutes"));
 app.use("/api/v1", require("./routes/interviewsRoutes"));
+app.use("/api/v1", require("./routes/subscribeRoutes"));
 
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {

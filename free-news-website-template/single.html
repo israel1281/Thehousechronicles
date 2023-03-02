@@ -212,7 +212,7 @@
                         const renderData = (data) => {
                             const postWrapper = document.getElementById("post-wrapper");
                             const postWrapperChild = `
-                            <img class="img-fluid w-100" src="img/${data.image}" style="object-fit: cover;">
+                            <img class="img-fluid w-100" src="img/${data.image}" style="object-fit: cover; height: 80vh;">
                             <div class="bg-white border border-top-0 p-4">
                                 <div class="mb-3">
                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -220,6 +220,7 @@
                                     <a class="text-body" href="">${data.createdAt}</a>
                                 </div>
                                 <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">${data.title}</h1>
+                                <p>${data.content}</p>
                             </div>
                             `;
                             postWrapper.innerHTML = postWrapperChild;

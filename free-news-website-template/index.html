@@ -110,7 +110,7 @@
                     </script>
                     <a href="/" class="nav-item nav-link active router-nav">Home</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="publication-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Publication</a>
+                        <a href="#" class="nav-link dropdown-toggle" id="publication-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Articles</a>
                         <div class="dropdown-menu catdr rounded-0 m-0 bg-dark" aria-labelledby="publication-dropdown">
                             <a href="#" class="dropdown-item router-nav publication-category-link" data-link="category-Satire">Satire</a>
                             <a href="#" class="dropdown-item router-nav publication-category-link" data-link="category-Story time">Story time</a>
@@ -288,7 +288,8 @@
     <div class="container-fluid pt-5 mb-3">
         <div class="container">
             <div class="section-title">
-                <h4 class="m-0 text-uppercase font-weight-bold">Thehousechronicles Network</h4>
+                <h4 class="m-0 text-uppercase font-weight-bold">The house chronicles Network</h4>
+                <a style="color: #000000; font-size: 20px; font-weight: bold; text-decoration: underline" href="https://www.youtube.com/@thehouschronicles">See more</a>
             </div>
             <div class="owl-carousel news-carousel position-relative">
                 <script>
@@ -417,10 +418,10 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="row news-lg mx-0 mb-3" style="height: 80%;">
-                                            <div class="col-md-6 px-0">
-                                                <img class="img-fluid" src="img/${catS?.posts[0]?.image}" style="object-fit: fixed;">
+                                            <div class="col-md-6 px-0 img-fluid w-100" style="position: relative;">
+                                                <img class="img-fluid" src="img/${catS?.posts[0]?.image}" style="object-fit: cover">
                                             </div>
-                                            <div class="col-md-6 d-flex flex-column border bg-white px-0">
+                                            <div class="col-md-6 d-flex flex-column border bg-white px-0" style="position: relative;">
                                                 <div class=" p-4">
                                                     <div class="mb-2">
                                                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -433,51 +434,51 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="d-flex align-items-center bg-white mb-3">
-                                            <img class="img-fluid" style="width: 110px;" src="img/${catS?.posts[1]?.image}" alt="">
-                                            <div class="w-100 h-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
-                                                <div class="mb-2">
+                                    <div class="col-lg-6 smally">
+                                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                            <img class="img-fluid-2" src="img/${catS?.posts[1]?.image}" alt="" style="object-fit: cover">
+                                            <div class="w-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
+                                                <div class="">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS?.posts[1]?.category?.name}">${catS?.posts[1]?.category?.name}</a>
                                                     <div class="text-body" data-link="createdAt-${catS?.posts[1]?._id}"><small>${formatDate(catS?.posts[1]?.createdAt)}</small></div>
                                                 </div>
                                                 <a class=" d-block mb-1 text-secondary" href="/category" data-link="author-${catS?.posts[1]?.author}">${catS?.posts[1]?.author}</a>
-                                                <a class="h6 m-2 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS?.posts[1]?._id}">${catS?.posts[1]?.title}</a>
+                                                <a class="h6 m-2 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS?.posts[1]?._id}">${truncate(catS?.posts[1]?.title)}</a>
                                             </div>
                                         </div>
-                                        <div class="d-flex align-items-center bg-white mb-3">
-                                            <img class="img-fluid" style="width: 110px" src="img/${catS?.posts[2]?.image}" alt="">
-                                            <div class="w-100 h-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
-                                                <div class="mb-2">
+                                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                            <img class="img-fluid-2" src="img/${catS?.posts[2]?.image}" alt="" style="object-fit: cover">
+                                            <div class="w-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
+                                                <div class="">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS?.posts[2]?.category?.name}">${catS?.posts[2]?.category?.name}</a>
                                                     <div class="text-body" data-link="createdAt-${catS?.posts[2]?._id}"><small>${formatDate(catS?.posts[2]?.createdAt)}</small></div>
                                                 </div>
                                                 <a class=" d-block mb-1 text-secondary" href="/category" data-link="author-${catS?.posts[2]?.author}">${catS?.posts[2]?.author}</a>
-                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS?.posts[2]?._id}">${catS?.posts[2]?.title}</a>
+                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS?.posts[2]?._id}">${truncate(catS?.posts[2]?.title)}</a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="d-flex align-items-center bg-white mb-3">
-                                            <img class="img-fluid" style="width: 110px;" src="img/${catS?.posts[3]?.image}" alt="">
-                                            <div class="w-100 h-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
-                                                <div class="mb-2">
+                                    <div class="col-lg-6 smally">
+                                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                            <img class="img-fluid-2" src="img/${catS?.posts[3]?.image}" alt="" style="object-fit: cover">
+                                            <div class="w-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
+                                                <div class="">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS?.posts[3]?.category?.name}">${catS?.posts[3]?.category?.name}</a>
                                                     <div class="text-body" data-link="createdAt-${catS?.posts[3]?._id}"><small>${formatDate(catS?.posts[3]?.createdAt)}</small></div>
                                                 </div>
                                                 <a class=" d-block mb-1 text-secondary" href="/category" data-link="author-${catS?.posts[3]?.author}">${catS?.posts[3]?.author}</a>
-                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS?.posts[3]?._id}">${catS?.posts[3]?.title}</a>
+                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS?.posts[3]?._id}">${truncate(catS?.posts[3]?.title)}</a>
                                             </div>
                                         </div>
-                                        <div class="d-flex align-items-center bg-white mb-3">
-                                            <img class="img-fluid" style="width: 110px;" src="img/${catS?.posts[4]?.image}" alt="">
-                                            <div class="w-100 h-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
-                                                <div class="mb-2">
+                                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                            <img class="img-fluid-2" src="img/${catS?.posts[4]?.image}" alt="" style="object-fit: cover">
+                                            <div class="w-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
+                                                <div class="">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS?.posts[4]?.category?.name}">${catS?.posts[4]?.category?.name}</a>
                                                     <div class="text-body" data-link="createdAt-${catS?.posts[4]?._id}"><small>${formatDate(catS?.posts[4]?.createdAt)}</small></div>
                                                 </div>
                                                 <a class=" d-block mb-1 text-secondary" href="/category" data-link="author-${catS?.posts[4]?.author}">${catS?.posts[4]?.author}</a>
-                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS?.posts[4]?._id}">${catS?.posts[4]?.title}</a>
+                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${catS?.posts[4]?._id}">${truncate(catS?.posts[4]?.title)}</a>
                                             </div>
                                         </div>
                                     </div>

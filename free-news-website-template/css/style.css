@@ -567,6 +567,12 @@ mark,
   position: relative;
 }
 
+.img-fluid-cat {
+  width: 372px;
+  height: 372px;
+  position: relative;
+}
+
 .img-fluid-2 {
   max-width: 110px;
   height: 110px;
@@ -586,6 +592,14 @@ mark,
 
 @media (max-width: 768px) {
   .img-fluid {
+    max-width: 100%;
+    height: 300px;
+    position: relative;
+  }
+}
+
+@media (max-width: 768px) {
+  .img-fluid-cat {
     max-width: 100%;
     height: 300px;
     position: relative;

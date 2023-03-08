@@ -128,6 +128,30 @@ const postCtrl = {
       res.status(500).json({ msg: err.message });
     }
   },
+  updatePost: async (req, res) => {
+    try {
+      await Post.findByIdAndUpdate({ _id: req.params.id }, { ...req.body });
+
+      res.json({
+        status: "success",
+        message: "Post successfully updated",
+      });
+    } catch (err) {
+      res.status(500).json({ msg: err.message });
+    }
+  },
+  deletePost: async (req, res) => {
+    try {
+      await Post.findByIdAndDelete({ _id: req.params.id });
+
+      res.json({
+        status: "success",
+        message: "Post successfully deleted",
+      });
+    } catch (err) {
+      res.status(500).json({ msg: err.message });
+    }
+  },
 };
 
 module.exports = postCtrl;

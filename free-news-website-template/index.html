@@ -176,9 +176,9 @@
             <div class="col-lg-7 px-0">
                 <div class="owl-carousel position-relative">
                         <script>
-                            axios.get("/api/v1/banner-slider/63ed0b602185147519b25bb3")
+                            axios.get("/api/v1/banner-slider")
                             .then((response) => {
-                                let bannerSlider = response.data.data.posts;
+                                let bannerSlider = response.data.data;
                                 
                                 let carousel = document.querySelector(".owl-carousel");
                                 let carouselHTML = "";
@@ -192,15 +192,15 @@
                                 bannerSlider.forEach(news => {
                                     carouselHTML += `
                                         <div class="position-relative overflow-hidden" style="height: 500px;">
-                                            <img class="img-fluid h-100" src="img/${news.image}" style="object-fit: cover;">
+                                            <img class="img-fluid h-100" src="img/${news.posts.image}" style="object-fit: cover;">
                                             <div class="overlay">
                                                 <div class="mb-2">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                                        href="/category" data-link="category-${news.category.name}">${news.category.name}</a>
+                                                        href="/category" data-link="category-${news.posts.category.name}">${news.posts.category.name}</a>
                                                     <div class="text-white" href="/content" data-link="">${formatDate(news.createdAt)}</div>
                                                 </div>
-                                                <a class="m-0 text-white" href="/category" data-link="author-${news.author}">${news.author}</a>
-                                                <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/content" data-link="${news._id}">${news.title}</a>
+                                                <a class="m-0 text-white" href="/category" data-link="author-${news.posts.author}">${news.posts.author}</a>
+                                                <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/content" data-link="${news._id}">${news.posts.title}</a>
                                             </div>
                                         </div>
                                     `;

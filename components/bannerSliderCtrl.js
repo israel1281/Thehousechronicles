@@ -10,9 +10,9 @@ const bannerSliderCtrl = {
       const filter = {};
       const bannerDocCount = await BannerSlider.countDocuments(filter);
 
-      if (bannerDocCount === 1)
+      if (bannerDocCount === 4)
         return res.status(400).json({
-          msg: "cant add extra bannerSlide. instead update the bannerslider",
+          msg: "cant add extra bannerSlide. limited to four inputs please update the slider",
         });
 
       const newBannerSliderContent = new BannerSlider({
@@ -31,7 +31,10 @@ const bannerSliderCtrl = {
   },
   getBannerSliderContent: async (req, res) => {
     try {
-      const bannerSlider = await BannerSlider.find().populate("posts");
+      const bannerSlider = await BannerSlider.find().populate({
+        path: "posts",
+        populate: "category",
+      });
 
       res.json({
         status: "success",

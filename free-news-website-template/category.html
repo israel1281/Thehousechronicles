@@ -149,16 +149,19 @@
 <div class="container-fluid mt-5 pt-3">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <!-- <div class="col-lg-8">
                     <div class="row" id="categories-wrapper">
                         <script>
-                        const fetchData = async (words) => {
+                        const PAGE_SIZE = 6; // Number of posts per page
+                        let currentPage = 1; // Current page number
+
+                        const fetchData = async (words, page) => {
                             try {
-                            const response = await axios.get(`/api/v1/post?${words[0]}=${words[1]}`);
-                            return response.data.data;
+                                const response = await axios.get(`/api/v1/post?${words[0]}=${words[1]}&page=${page}&limit=${PAGE_SIZE}`);
+                                return response.data;
                             } catch (error) {
-                            console.log(error.message);
-                            return [];
+                                console.log(error.message);
+                                return { data: [], total: 0 };
                             }
                         };
                         
@@ -240,6 +243,116 @@
                         <a href="#" style="background-color: #ddd; color: black; padding: 8px 16px; text-decoration: none; border-radius: 50%; margin-right: 10px;">3</a>
                         <a href="#" style="background-color: #ddd; color: black; padding: 8px 16px; text-decoration: none; border-radius: 50%; margin-right: 10px;">&raquo;</a>
                     </div>
+                </div> -->
+                
+                <div class="col-lg-8">
+    <div class="row" id="categories-wrapper">
+        <script>
+        const fetchData = async (words, page) => {
+            try {
+                const response = await axios.get(`/api/v1/post?${words[0]}=${words[1]}&page=${page}`);
+                return response.data;
+            } catch (error) {
+                console.log(error.message);
+                return {data: []};
+            }
+        };
+        
+        const formatDate = (dateString) => {
+            const date = new Date(dateString);
+            const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        };
+
+        const renderData = (data) => {
+            const categoriesWrapper = document.getElementById("categories-wrapper");
+            const categoriesChild = `
+                <div class="col-12">
+                    <div class="section-title">
+                        <h3 class="m-0 text-uppercase font-weight-bold">${data.category}</h3>
+                    </div>
+                </div>
+                ${
+                    data.posts.map(
+                        (post) => `
+                            <div class="col-lg-6">
+                                <div class="position-relative mb-3">
+                                    <img
+                                        class="img-fluid-cat w-100"
+                                        src="img/${post.image}"
+                                        style="object-fit: cover;"
+                                    />
+                                    <div class="bg-white border border-top-0 p-4">
+                                        <div class="mb-2">
+                                            <a
+                                                class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                                href="/category"
+                                                data-link="category-${post.category.name}"
+                                            >
+                                                ${post.category.name}
+                                            </a>
+                                            <div class="text-body" href=""><small>${formatDate(post.createdAt)}</small></div>
+                                        </div>
+                                        <a
+                                            class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold"
+                                            href="/content"
+                                            data-link="${post._id}"
+                                        >
+                                            ${post.title}
+                                        </a>
+                                        <p class="m-0">
+                                            Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
+                                            rebum clita rebum dolor stet amet justo
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    ).join("")
+                }
+            `;
+
+            categoriesWrapper.innerHTML = categoriesChild;
+        };
+        
+        window.addEventListener('click', (event) => {
+            const link = event.target.getAttribute('data-link');
+            localStorage.setItem('selectedLink', link);
+        });
+
+        let currentPage = 1;
+
+        const categoryName = localStorage.getItem("selectedLink");
+        const str = categoryName;
+        const words = str.split("-");
+
+        fetchData(words, currentPage).then((data) => {
+            renderData(data);
+            const paginationWrapper = document.createElement('div');
+            paginationWrapper.classList.add('pagination-wrapper');
+            const totalPages = Math.ceil(data.count / 6);
+
+            for(let i = 1; i <= totalPages; i++) {
+                const pageLink = document.createElement('a');
+                pageLink.classList.add('page-link');
+                pageLink.textContent = i;
+                if(i === currentPage) {
+                    pageLink.classList.add('active');
+                }
+                pageLink.addEventListener('click', () => {
+                    currentPage = i;
+                    fetchData(words, currentPage).then((data) => {
+                        renderData(data);
+                    });
+                    document.querySelectorAll('.page-link').forEach(link => link.classList.remove('active'));
+                    link.classList.add('active');
+                    });
+                    paginationWrapper.appendChild(pageLink);
+                }
+                       categoriesWrapper.appendChild(paginationWrapper);
+                    });
+                    </script>
+                </div>
                 </div>
                 
                 <div class="col-lg-4">

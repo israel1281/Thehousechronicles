@@ -74,6 +74,26 @@ const postCtrl = {
       res.status(500).json({ msg: err.message });
     }
   },
+  adminFilterPost: async (req, res) => {
+    try {
+      const categoryPosts = await Post.find()
+        .sort({ _id: -1 })
+        .populate("category");
+      const catPosts = categoryPosts.filter(
+        (post) => post.category.name === req.query.category
+      );
+
+      const filteredPosts = catPosts && catPosts.length ? catPosts : "";
+
+      res.json({
+        status: "success",
+        count: filteredPosts.length,
+        data: filteredPosts,
+      });
+    } catch (err) {
+      res.status(500).json({ msg: err.message });
+    }
+  },
   getPosts: async (req, res) => {
     try {
       if (!req.query.category) {

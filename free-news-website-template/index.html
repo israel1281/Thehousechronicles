@@ -336,27 +336,6 @@
                                     nav: false,
                                     items: 1
                                 });
-
-                                // Update the owlCarousel configuration on window resize
-                                $(window).resize(() => {
-                                    let windowWidth = $(window).width();
-
-                                    if (windowWidth < 576) {
-                                        $('.news-carousel').trigger('destroy.owl.carousel');
-                                        $('.news-carousel').addClass('off');
-                                    } else {
-                                        $('.news-carousel.off').removeClass('off');
-                                        $('.news-carousel').owlCarousel({
-                                            autoplay: true,
-                                            smartSpeed: 1000,
-                                            margin: 30,
-                                            dots: true,
-                                            loop: true,
-                                            nav: false,
-                                            items: 1
-                                        });
-                                    }
-                                });
                             })
                             
                             // window.addEventListener('click', (event) => {

@@ -5,5 +5,6 @@ router.post("/banner-slider", bannerSliderCtrl.createBannerSlider);
 router.get("/banner-slider", bannerSliderCtrl.getBannerSliderContent);
 router.put("/banner-slider/:id", bannerSliderCtrl.updateBannerSliderContent);
 router.get("/banner-slider/:id", bannerSliderCtrl.getBannerSliderContentById);
+router.delete("/banner-slider/:id", bannerSliderCtrl.deleteBanner);
 
 module.exports = router;

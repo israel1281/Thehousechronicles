@@ -140,6 +140,18 @@ const postCtrl = {
       res.status(500).json({ msg: err.message });
     }
   },
+  searchPost: async (req, res) => {
+    try {
+      const post = await Post.find({ title: { $regex: req.query.title } });
+
+      res.json({
+        status: "success",
+        data: post,
+      });
+    } catch (err) {
+      res.status(500).json({ msg: err.message });
+    }
+  },
   deletePost: async (req, res) => {
     try {
       await Post.findByIdAndDelete({ _id: req.params.id });

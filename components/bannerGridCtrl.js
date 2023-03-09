@@ -10,7 +10,7 @@ const bannerGridCtrl = {
       const filter = {};
       const bannerDocCount = await BannerGrid.countDocuments(filter);
 
-      if (bannerDocCount === 1)
+      if (bannerDocCount === 4)
         return res.status(400).json({
           msg: "cant add extra bannerGrid. instead update the bannerGrid",
         });
@@ -31,7 +31,10 @@ const bannerGridCtrl = {
   },
   getBannerGridContent: async (req, res) => {
     try {
-      const bannerGrid = await BannerGrid.find().populate("posts");
+      const bannerGrid = await BannerGrid.find().populate({
+        path: "posts",
+        populate: "category",
+      });
 
       res.json({
         status: "success",
@@ -69,6 +72,18 @@ const bannerGridCtrl = {
 
       res.json({
         message: "update successful",
+      });
+    } catch (err) {
+      res.status(500).json({ msg: err.message });
+    }
+  },
+  deleteBannerGrid: async (req, res) => {
+    try {
+      await BannerGrid.findByIdAndDelete({ _id: req.params.id });
+
+      res.json({
+        status: "success",
+        message: "banner deleted successfully",
       });
     } catch (err) {
       res.status(500).json({ msg: err.message });

@@ -77,6 +77,18 @@ const bannerSliderCtrl = {
       res.status(500).json({ msg: err.message });
     }
   },
+  deleteBanner: async (req, res) => {
+    try {
+      await BannerSlider.findByIdAndDelete({ _id: req.params.id });
+
+      res.json({
+        status: "success",
+        message: "banner deleted successfully",
+      });
+    } catch (err) {
+      res.status(500).json({ msg: err.message });
+    }
+  },
 };
 
 module.exports = bannerSliderCtrl;

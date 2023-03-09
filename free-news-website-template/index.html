@@ -200,7 +200,7 @@
                                                     <div class="text-white" href="/content" data-link="">${formatDate(news.createdAt)}</div>
                                                 </div>
                                                 <a class="m-0 text-white" href="/category" data-link="author-${news.posts.author}">${news.posts.author}</a>
-                                                <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/content" data-link="${news._id}">${news.posts.title}</a>
+                                                <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/content" data-link="${news.posts.posts._id}">${news.posts.title}</a>
                                             </div>
                                         </div>
                                     `;
@@ -260,7 +260,7 @@
                                                         href="/category" data-link="category-${news.posts.category.name}">${news.posts.category.name}</a>
                                                     <a class="text-white" href="/content" data-link="createdAt-${news._id}">${formatDate(news.createdAt)}</a>
                                                 </div>
-                                                <a class="h6 m-0 text-white text-uppercase font-weight-semibold" href="/content" data-link="${news._id}">${news.posts.title}</a>
+                                                <a class="h6 m-0 text-white text-uppercase font-weight-semibold" href="/content" data-link="${news.posts._id}">${news.posts.title}</a>
                                             </div>
                                         </div>
                                     </div>

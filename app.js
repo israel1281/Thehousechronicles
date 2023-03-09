@@ -59,6 +59,10 @@ app.get("/contact", (req, res) => {
   res.sendFile(path.join(__dirname, "free-news-website-template/contact.html"));
 });
 
+app.get("/admin", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
 app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "free-news-website-template/about.html"));
 });
@@ -68,6 +72,11 @@ app.get("/content", (req, res) => {
 });
 
 app.use(express.static(path.join(__dirname, "free-news-website-template")));
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 app.listen(4000, () => {
   console.log("server start at port 4000");

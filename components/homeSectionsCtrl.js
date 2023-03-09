@@ -47,6 +47,18 @@ const homeSectionCtrl = {
       res.status(500).json({ msg: err.message });
     }
   },
+  deleteHomesection: async (req, res) => {
+    try {
+      await HomeSections.findByIdAndDelete({ _id: req.params.id });
+
+      res.json({
+        status: "success",
+        message: "Successfully deleted section",
+      });
+    } catch (error) {
+      res.status(500).json({ msg: err.message });
+    }
+  },
 };
 
 module.exports = homeSectionCtrl;

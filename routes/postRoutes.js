@@ -7,5 +7,6 @@ router.get("/post/:id", postCtrl.getPostsById);
 router.put("/post/:id", postCtrl.updatePost);
 router.delete("/post/:id", postCtrl.deletePost);
 router.get("/post", postCtrl.searchPost);
+router.get("/filter-posts", postCtrl.adminFilterPost);
 
 module.exports = router;

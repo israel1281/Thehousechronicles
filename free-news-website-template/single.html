@@ -276,9 +276,9 @@
                     <!-- Ads End -->
 
                     <!-- Popular News Start -->
-                     <div class="mb-3">
+                    <div class="mb-3">
                         <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Trending</h4>
+                            <h4 class="m-0 text-uppercase font-weight-bold">Newly Added</h4>
                         </div>
                         <div class="bg-white trd border border-top-0 p-3">
                             <script>
@@ -293,9 +293,9 @@
                                     return date.toLocaleDateString('en-US', options);
                                 }
                                 
-                                axios.get("/api/v1/trending/63ee4abf8bc0356ed82feee7")
+                                axios.get("/api/v1/post")
                                 .then((response) => {
-                                    let trending = response.data.data.posts
+                                    let trending = response.data.data
                                     let trending1 = document.querySelector(".trd")
                                     let trendingHTML = "";
 
@@ -402,7 +402,7 @@
                     <a class="btn btn-lg btn-secondary btn-lg-square" href="https://www.youtube.com/@thehouschronicles"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-             <div class="col-lg-3 col-md-6 mb-5">
+             <!-- <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular</h5>
                 <div class="pop">
                     <script>
@@ -445,7 +445,7 @@
     
                     </script>
                 </div>
-            </div>
+            </div> -->
               <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
                 <div class="m-n1 catft">
@@ -479,7 +479,7 @@
                     </script>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
+            <!-- <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Flickr Photos</h5>
                 <div class="row frl">
                     <script>
@@ -518,7 +518,7 @@
                         flickr1.innerHTML = flickrHTML
                     </script>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">

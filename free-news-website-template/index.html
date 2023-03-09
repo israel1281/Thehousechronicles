@@ -235,10 +235,10 @@
             <div class="col-lg-5 px-0">
                 <div class="row mx-0 banner-grid">
                     <script>
-                        axios.get("/api/v1/banner-grid/63ed2759cf714f1ea7f01f72")
+                        axios.get("/api/v1/banner-grid")
                         .then((response) => {
                             
-                            let newsData1 = response.data.data.posts
+                            let newsData1 = response.data.data
                             
                             let carousel1 = document.querySelector(".banner-grid");
                             let carouselHTML1 = "";
@@ -253,14 +253,14 @@
                                 carouselHTML1 += `
                                     <div class="col-md-6 px-0">
                                         <div class="position-relative overflow-hidden" style="height: 250px;">
-                                            <img class="img-fluid w-100 h-100" src="img/${news.image}" style="object-fit: cover;">
+                                            <img class="img-fluid w-100 h-100" src="img/${news.posts.image}" style="object-fit: cover;">
                                             <div class="overlay">
                                                 <div class="mb-2">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                                        href="/category" data-link="category-${news.category.name}">${news.category.name}</a>
+                                                        href="/category" data-link="category-${news.posts.category.name}">${news.posts.category.name}</a>
                                                     <a class="text-white" href="/content" data-link="createdAt-${news._id}">${formatDate(news.createdAt)}</a>
                                                 </div>
-                                                <a class="h6 m-0 text-white text-uppercase font-weight-semibold" href="/content" data-link="${news._id}">${news.title}</a>
+                                                <a class="h6 m-0 text-white text-uppercase font-weight-semibold" href="/content" data-link="${news._id}">${news.posts.title}</a>
                                             </div>
                                         </div>
                                     </div>

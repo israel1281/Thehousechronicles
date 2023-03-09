@@ -6,5 +6,6 @@ router.get("/post", postCtrl.getPosts);
 router.get("/post/:id", postCtrl.getPostsById);
 router.put("/post/:id", postCtrl.updatePost);
 router.delete("/post/:id", postCtrl.deletePost);
+router.get("/post", postCtrl.searchPost);
 
 module.exports = router;

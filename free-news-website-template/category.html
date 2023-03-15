@@ -9,7 +9,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/THE HOUSE CHRONICLES-01.jpg" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -246,6 +246,192 @@
                 </div>
     <!-- News With Sidebar End -->
 
+    <div class="col-lg-4">
+        <!-- Social Follow Start -->
+        <div class="mb-3">
+            <div class="section-title mb-0">
+                <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
+            </div>
+            <div class="bg-white border border-top-0 p-3">
+                <a href="https://www.facebook.com/TheHouseChronicles/" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
+                    <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                    <span class="font-weight-medium">Facebook</span>
+                </a>
+                <a href="https://twitter.com/housechroniclex?s=21&t=Wr6MkJJxcnaV8luKZcU03A" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
+                    <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                    <span class="font-weight-medium">Twitter</span>
+                </a>
+                <a href="https://www.instagram.com/thehousechronicles_/" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
+                    <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                    <span class="font-weight-medium">Instagram</span>
+                </a>
+                <a href="https://www.youtube.com/@thehouschronicles" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #DC472E;">
+                    <i class="fab fa-youtube text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                    <span class="font-weight-medium">Youtube</span>
+                </a>
+            </div>
+        </div>
+        <!-- Social Follow End -->
+
+        <!-- Ads Start -->
+        <div class="mb-3">
+            <div class="section-title mb-0">
+                <h4 class="m-0 text-uppercase font-weight-bold">Advertisement</h4>
+            </div>
+            <div class="bg-white text-center border border-top-0">
+                <!-- <a href=""><img class="img-fluid" src="img/BANTS WITH LAYZEE ELLA.jpg" alt=""></a> -->
+                <video class="img-fluid" src="img/thehousead.mp4" controls autoplay muted preload="none"/>
+            </div>
+        </div>
+        <!-- Ads End -->
+
+        <!-- Popular News Start -->
+        <div class="mb-3">
+            <div class="section-title mb-0">
+                <h4 class="m-0 text-uppercase font-weight-bold">Newly Added</h4>
+            </div>
+            <div class="bg-white trd border border-top-0 p-3">
+                <script>
+                    function truncate(text) {
+                        if (text.length > 10)
+                            return text = text.substring(0, 15) + "...";
+                    }
+                    
+                    function formatDate(dateString) {
+                        const date = new Date(dateString);
+                        const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                        return date.toLocaleDateString('en-US', options);
+                    }
+                    
+                    axios.get("/api/v1/post")
+                    .then((response) => {
+                        let trending = response.data.data
+                        let trending1 = document.querySelector(".trd")
+                        let trendingHTML = "";
+
+                        trending.forEach(tr => {
+                            trendingHTML += `
+                                <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                    <img style="width:110px; height:110px;" class="img-fluid" src="img/${tr.image}" alt="">
+                                    <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                        <div class="mb-2">
+                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${tr.category.name}">${tr.category.name}</a>
+                                            <div class="text-body" href="/content" data-link="createdAt-${tr._id}"><small>${formatDate(tr.createdAt)}</small></div>
+                                        </div>
+                                        <a class="m-0 text-secondary" href="/category" data-link="author-${tr.author}">${tr.author}</a>
+                                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/content" data-link="${tr._id}">${truncate(tr.title)}</a>
+                                    </div>
+                                </div>
+                            `;
+                        })
+
+                        trending1.innerHTML = trendingHTML
+                    })
+                    .catch((error) => {
+                        console.log(error.message)
+                    })
+
+
+                </script>
+            </div>
+        </div>
+        <!-- Popular News End -->
+
+        <!-- Newsletter Start -->
+            <div class="mb-3">
+                <div class="section-title mb-0">
+                    <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
+                </div>
+                <div class="bg-white text-center border border-top-0 p-3">
+                    <p>Subscribe to our Newsletter to get updates directly to your mailbox</p>
+                    <form id="my-form" action="/api/v1/subscribe" method="POST">
+                        <div class="input-group mb-2" style="width: 100%;">
+                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Your Email" required>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary font-weight-bold px-3">
+                                    <span>Subscribe</span>
+                                    <span class="spinner-border spinner-border-sm d-none"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <small>Please provide a valid email address</small>
+                    </form>
+                </div>
+            </div>
+            <script>
+                const form = document.querySelector('#my-form');
+                const submitButton = form.querySelector('button[type="submit"]');
+
+                form.addEventListener('submit', (event) => {
+                    event.preventDefault(); // prevent the default form submission behavior
+
+                    // show the loading spinner and disable the submit button
+                    submitButton.disabled = true;
+                    submitButton.classList.add('btn-loading');
+                    submitButton.querySelector('span').classList.add('d-none');
+                    submitButton.querySelector('.spinner-border').classList.remove('d-none');
+
+                    // perform an AJAX request to the server to submit the form data
+                    axios.post('/api/v1/subscribe', new FormData(form))
+                        .then((response) => {
+                            if (response.status === 200) {
+                                // show an alert message if the form was successfully submitted
+                                alert('Thank you for subscribing to our newsletter!');
+                                form.reset(); // clear the form inputs
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            // show an error message if there was a network error
+                            alert(error.response.data.msg)
+                        })
+                        .finally(() => {
+                            // hide the loading spinner and enable the submit button
+                            submitButton.disabled = false;
+                            submitButton.classList.remove('btn-loading');
+                            submitButton.querySelector('.spinner-border').classList.add('d-none');
+                            submitButton.querySelector('span').classList.remove('d-none');
+                        });
+                });
+            </script>
+        <!-- Newsletter End -->
+
+        <!-- Tags Start -->
+        <div class="mb-3">
+            <div class="section-title mb-0">
+                <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
+            </div>
+            <div class="bg-white border border-top-0 p-3">
+                <div class="d-flex tg flex-wrap m-n1">
+                <script>
+                    axios.get("api/v1/category")
+                    .then((response) => {
+                        const dropdown = response.data.data;
+                        const dropdown1 = document.querySelector(".tg");
+                        const dropdownHTML = dropdown.map(dpd => {
+                            return `
+                                <a href="/category" data-link="category-${dpd.name}" class="btn btn-sm btn-outline-secondary m-1">${dpd.name}</a>
+                            `;
+                        }).join("");
+                        dropdown1.innerHTML = dropdownHTML;
+
+                        dropdown1.addEventListener("click", (event) => {
+                            if (event.target.matches(".router-nav")) {
+                                const link = event.target.getAttribute("data-link");
+                                localStorage.setItem("selectedLink", link);
+                            }
+                        });
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
+                </script>
+                </div>
+            </div>
+        </div>
+        <!-- Tags End -->
+    </div>
+
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
@@ -263,7 +449,7 @@
                     <a class="btn btn-lg btn-secondary btn-lg-square" href="https://www.youtube.com/@thehouschronicles"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-             <!-- <div class="col-lg-3 col-md-6 mb-5">
+            <!-- <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular</h5>
                 <div class="pop">
                     <script>
@@ -279,9 +465,9 @@
                             return date.toLocaleDateString('en-US', options);
                         }
                         
-                        axios.get("/api/v1/trending/63ee4abf8bc0356ed82feee7")
+                        axios.get("/api/v1/post")
                             .then((response) => {
-                                let trending = response.data.data.posts
+                                let trending = response.data.data
                                 let popular1 = document.querySelector(".pop")
                                 let popularHTML = "";
             
@@ -307,7 +493,7 @@
                     </script>
                 </div>
             </div> -->
-              <div class="col-lg-3 col-md-6 mb-5">
+            <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
                 <div class="m-n1 catft">
                     <script>
@@ -345,7 +531,7 @@
                 <div class="row frl">
                     <script>
                         let flickr = [
-                           {
+                             {
                                 image: "img/IGNITION TEMPLATE.jpg",
                             },
                             {

@@ -4,7 +4,7 @@ const interviewsCtrl = {
   createInterviews: async (req, res) => {
     try {
       const { posts, link } = req.body;
-      if (!posts && !link)
+      if (!posts)
         return res.status(400).json({ msg: "please provide all payload" });
 
       const filter = {};
@@ -17,7 +17,6 @@ const interviewsCtrl = {
 
       const newInterviews = new Interviews({
         posts,
-        link,
       });
 
       await newInterviews.save();

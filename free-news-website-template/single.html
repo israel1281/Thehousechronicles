@@ -9,7 +9,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/THE HOUSE CHRONICLES-01.jpg" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -209,6 +209,12 @@
                             }
                         };
 
+                        const formatDate = (dateString) => {
+                            const date = new Date(dateString);
+                            const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                            return date.toLocaleDateString('en-US', options);
+                            };
+
                         const renderData = (data) => {
                             const postWrapper = document.getElementById("post-wrapper");
                             const postWrapperChild = `
@@ -217,7 +223,7 @@
                                 <div class="mb-3">
                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
                                         href="">${data.category.name}</a>
-                                    <a class="text-body" href="">${data.createdAt}</a>
+                                    <a class="text-body" href="">${formatDate(data.createdAt)}</a>
                                 </div>
                                 <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">${data.title}</h1>
                                 <p>${data.content}</p>

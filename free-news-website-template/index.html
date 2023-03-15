@@ -11,7 +11,7 @@
     <meta name="description" content="Free HTML Templates">
 
     <!-- Favicon -->
-    <link rel="icon" href="img/favicon.ico">
+    <link href="img/THE HOUSE CHRONICLES-01.jpg" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -312,12 +312,12 @@
                                 <img class="img-fluid h-100" src="img/${ft.posts.image}" style="object-fit: cover;">
                                 <div class="overlay">
                                     <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                        href="${ft.link}">${ft.posts.category.name}</a>
-                                    <div class="text-white" href="${ft.link}"><small>${formatDate(ft.posts.createdAt)}</small></div>
+                                    <a data-link="category-${ft.posts.category.name}" class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        href="/category">${ft.posts.category.name}</a>
+                                    <div class="text-white"><small>${formatDate(ft.posts.createdAt)}</small></div>
                                     </div>
-                                    <a class="m-0 text-white" href="${ft.link}">${ft.posts.author}</a>
-                                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="${ft.link}">${ft.posts.title}</a>
+                                    <a class="m-0 text-white" href="/category" data-link="category-${ft.posts.author}"">${ft.posts.author}</a>
+                                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/content" data-link="${ft.posts._id}"">${ft.posts.title}</a>
                                 </div>
                                 </div>
                             `;
@@ -338,10 +338,10 @@
                                 });
                             })
                             
-                            // window.addEventListener('click', (event) => {
-                            // const link = event.target.getAttribute('data-link');
-                            // localStorage.setItem('selectedLink', link);
-                            // });
+                             window.addEventListener('click', (event) => {
+                             const link = event.target.getAttribute('data-link');
+                             localStorage.setItem('selectedLink', link);
+                             });
                             
                         } catch (error) {
                             console.error(error.message);
@@ -505,7 +505,7 @@
                         <div class="section-title mb-0">
                             <h4 class="m-0 text-uppercase font-weight-bold">Advertisement</h4>
                         </div>
-                        <div class="bg-white text-center border border-top-0 p-2">
+                        <div class="bg-white text-center border border-top-0">
                             <!-- <a href=""><img class="img-fluid" src="img/BANTS WITH LAYZEE ELLA.jpg" alt=""></a> -->
                             <video class="img-fluid" src="img/thehousead.mp4" controls autoplay muted preload="none"/>
                         </div>

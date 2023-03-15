@@ -97,6 +97,7 @@ h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  color: "#000000"
 }
 
 abbr[title],
@@ -1020,6 +1021,10 @@ pre code {
 
 .offset-11 {
   margin-left: 91.66667%;
+}
+
+.about-section {
+  color: #000000
 }
 
 @media (min-width: 576px) {
@@ -2601,22 +2606,22 @@ fieldset:disabled a.btn {
 .btn-primary.disabled,
 .btn-primary:disabled {
   color: #212529;
-  background-color: #ffcc00;
-  border-color: #ffcc00;
+  background-color: #34ce57;
+  border-color: #34ce57;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active,
 .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #212529;
-  background-color: #cca300;
-  border-color: #bf9900;
+  background-color: #34ce57;
+  border-color: #34ce57;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus,
 .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(222, 179, 6, 0.5);
+  box-shadow: 0 0 0 0.2rem #34ce57;
 }
 
 .btn-secondary {
@@ -3503,7 +3508,7 @@ input[type="button"].btn-block {
 .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #ffcc00;
+  background-color: #f8f9fa;
 }
 
 .dropdown-item.disabled,

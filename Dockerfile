@@ -10,11 +10,11 @@ COPY package*.json ./
 # Install app dependencies
 RUN npm install
 
-# Create a subdirectory for the app code
-RUN mkdir app
+# # Create a subdirectory for the app code
+# RUN mkdir shards-dashboard-react
 
-# Set the working directory to /app
-WORKDIR /thc/shards-dashboard-react
+# # Set the working directory to /app
+# WORKDIR /thc/shards-dashboard-react
 
 # Copy app source code to /app
 COPY . .
@@ -23,7 +23,7 @@ COPY . .
 RUN cd shards-dashboard-react && npm install
 
 # Expose ports 4000 and 6000
-EXPOSE 4000 6000
+EXPOSE 4000 3000
 
 # Start the subdirectory and the root directory
 CMD ["npm", "start", "--prefix", "subdirectory"] && npm start

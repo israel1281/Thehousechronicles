@@ -192,7 +192,7 @@
                                 bannerSlider.forEach(news => {
                                     carouselHTML += `
                                         <div class="position-relative overflow-hidden" style="height: 500px;">
-                                            <img class="img-fluid h-100" src="img/${news.posts.image}" style="object-fit: cover;">
+                                            <img class="img-fluid h-100" src="https://thehousechronicles.com/img/${news.posts.image}" style="object-fit: cover;">
                                             <div class="overlay">
                                                 <div class="mb-2">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -224,6 +224,7 @@
                                 window.addEventListener("click", function(event) {
                                     let link = event.target.getAttribute("data-link");
                                     localStorage.setItem("selectedLink", link);
+                                    sessionStorage.setItem("selectedLink", link)
                                 });
                             })
                             .catch((error) => {
@@ -253,7 +254,7 @@
                                 carouselHTML1 += `
                                     <div class="col-md-6 px-0">
                                         <div class="position-relative overflow-hidden" style="height: 250px;">
-                                            <img class="img-fluid w-100 h-100" src="img/${news.posts.image}" style="object-fit: cover;">
+                                            <img class="img-fluid w-100 h-100" src="https://thehousechronicles.com/img/${news.posts.image}" style="object-fit: cover;">
                                             <div class="overlay">
                                                 <div class="mb-2">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -271,6 +272,7 @@
                             window.addEventListener("click", function(event) {
                                 let link = event.target.getAttribute("data-link");
                                 localStorage.setItem("selectedLink", link);
+                                sessionStorage.setItem("selectedLink", link)
                             });
                         })
                         .catch((error) => {
@@ -309,7 +311,7 @@
                             featured.forEach((ft) => {
                             carouselHTML += `
                                 <div class="position-relative overflow-hidden" style="height: 300px;">
-                                <img class="img-fluid h-100" src="img/${ft.posts.image}" style="object-fit: cover;">
+                                <img class="img-fluid h-100" src="https://thehousechronicles.com/img/${ft.posts.image}" style="object-fit: cover;">
                                 <div class="overlay">
                                     <div class="mb-2">
                                     <a data-link="category-${ft.posts.category.name}" class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -341,6 +343,7 @@
                              window.addEventListener('click', (event) => {
                              const link = event.target.getAttribute('data-link');
                              localStorage.setItem('selectedLink', link);
+                             sessionStorage.setItem("selectedLink", link)
                              });
                             
                         } catch (error) {
@@ -398,7 +401,7 @@
                                     <div class="col-lg-12">
                                         <div class="row news-lg mx-0 mb-3" style="height: 80%;">
                                             <div class="col-md-6 px-0 img-fluid w-100" style="position: relative;">
-                                                <img class="img-fluid" src="img/${catS?.posts[0]?.image}" style="object-fit: cover">
+                                                <img class="img-fluid" src="https://thehousechronicles.com/img/${catS?.posts[0]?.image}" style="object-fit: cover">
                                             </div>
                                             <div class="col-md-6 d-flex flex-column border bg-white px-0" style="position: relative;">
                                                 <div class=" p-4">
@@ -415,7 +418,7 @@
                                     </div>
                                     <div class="col-lg-6 smally">
                                         <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                            <img class="img-fluid-2" src="img/${catS?.posts[1]?.image}" alt="" style="object-fit: cover">
+                                            <img class="img-fluid-2" src="https://thehousechronicles.com/img/${catS?.posts[1]?.image}" alt="" style="object-fit: cover">
                                             <div class="w-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
                                                 <div class="">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS?.posts[1]?.category?.name}">${catS?.posts[1]?.category?.name}</a>
@@ -426,7 +429,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                            <img class="img-fluid-2" src="img/${catS?.posts[2]?.image}" alt="" style="object-fit: cover">
+                                            <img class="img-fluid-2" src="https://thehousechronicles.com/img/${catS?.posts[2]?.image}" alt="" style="object-fit: cover">
                                             <div class="w-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
                                                 <div class="">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS?.posts[2]?.category?.name}">${catS?.posts[2]?.category?.name}</a>
@@ -439,7 +442,7 @@
                                     </div>
                                     <div class="col-lg-6 smally">
                                         <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                            <img class="img-fluid-2" src="img/${catS?.posts[3]?.image}" alt="" style="object-fit: cover">
+                                            <img class="img-fluid-2" src="https://thehousechronicles.com/img/${catS?.posts[3]?.image}" alt="" style="object-fit: cover">
                                             <div class="w-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
                                                 <div class="">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS?.posts[3]?.category?.name}">${catS?.posts[3]?.category?.name}</a>
@@ -450,7 +453,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                            <img class="img-fluid-2" src="img/${catS?.posts[4]?.image}" alt="" style="object-fit: cover">
+                                            <img class="img-fluid-2" src="https://thehousechronicles.com/img/${catS?.posts[4]?.image}" alt="" style="object-fit: cover">
                                             <div class="w-100 px-4 py-4 d-flex flex-column justify-content-center border border-left-0">
                                                 <div class="">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${catS?.posts[4]?.category?.name}">${catS?.posts[4]?.category?.name}</a>
@@ -539,7 +542,7 @@
                                     trending.forEach(tr => {
                                         trendingHTML += `
                                             <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                                <img style="width:110px; height:110px;" class="img-fluid" src="img/${tr.image}" alt="">
+                                                <img style="width:110px; height:110px;" class="img-fluid" src="https://thehousechronicles.com/img/${tr.image}" alt="">
                                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                                     <div class="mb-2">
                                                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${tr.category.name}">${tr.category.name}</a>
@@ -646,6 +649,7 @@
                                         if (event.target.matches(".router-nav")) {
                                             const link = event.target.getAttribute("data-link");
                                             localStorage.setItem("selectedLink", link);
+                                            sessionStorage.setItem("selectedLink", link)
                                         }
                                     });
                                 })
@@ -748,6 +752,7 @@
                                     if (event.target.matches(".router-nav")) {
                                         const link = event.target.getAttribute("data-link");
                                         localStorage.setItem("selectedLink", link);
+                                        sessionStorage.setItem("selectedLink", link)
                                     }
                                 });
                             })

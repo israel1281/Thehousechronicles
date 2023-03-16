@@ -186,7 +186,7 @@
                                     <div class="position-relative mb-3">
                                         <img
                                         class="img-fluid-cat w-100"
-                                        src="img/${post.image}"
+                                        src="https://thehousechronicles.com/img/${post.image}"
                                         style="object-fit: cover;"
                                         />
                                         <div class="bg-white border border-top-0 p-4">
@@ -227,7 +227,7 @@
                             localStorage.setItem('selectedLink', link);
                         });
 
-                        const categoryName = localStorage.getItem("selectedLink");
+                        const categoryName = sessionStorage.getItem("selectedLink");
                         const str = categoryName;
                         const words = str.split("-");
                         console.log(words)
@@ -236,13 +236,13 @@
                         });
                         </script>
                     </div>
-                    <div style="width: 100%; height: 6vh; margin-right: 50%; margin-top: 40px; display: flex; justify-content: center">
+                    <!-- <div style="width: 100%; height: 6vh; margin-right: 50%; margin-top: 40px; display: flex; justify-content: center">
                         <a href="#" style="background-color: #ddd; color: black; padding: 8px 16px; text-decoration: none; border-radius: 50%; margin-right: 10px;">&laquo;</a>
                         <a href="#" style="background-color: #ddd; color: black; padding: 8px 16px; text-decoration: none; border-radius: 50%; margin-right: 10px;">1</a>
                         <a href="#" style="background-color: #ddd; color: black; padding: 8px 16px; text-decoration: none; border-radius: 50%; margin-right: 10px;">2</a>
                         <a href="#" style="background-color: #ddd; color: black; padding: 8px 16px; text-decoration: none; border-radius: 50%; margin-right: 10px;">3</a>
                         <a href="#" style="background-color: #ddd; color: black; padding: 8px 16px; text-decoration: none; border-radius: 50%; margin-right: 10px;">&raquo;</a>
-                    </div>
+                    </div> -->
                 </div>
     <!-- News With Sidebar End -->
 
@@ -312,7 +312,7 @@
                         trending.forEach(tr => {
                             trendingHTML += `
                                 <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                    <img style="width:110px; height:110px;" class="img-fluid" src="img/${tr.image}" alt="">
+                                    <img style="width:110px; height:110px;" class="img-fluid" src="https://thehousechronicles.com/img/${tr.image}" alt="">
                                     <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/category" data-link="category-${tr.category.name}">${tr.category.name}</a>
@@ -497,7 +497,7 @@
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
                 <div class="m-n1 catft">
                     <script>
-                        axios.get("api/v1/category")
+                        axios.get("/api/v1/category")
                             .then((response) => {
                                 const dropdown = response.data.data;
                                 

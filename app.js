@@ -45,12 +45,7 @@ const upload = multer({ storage: storage }).single('file');
 app.post("/api/v1/upload", upload, function (req, res) {
   const file = req.file;
 
-    // Create a readable stream to the uploaded file
-    const readStream = fs.createReadStream(file.path);
-
-    // Pipe the file to a writable stream in the second directory
-    const writeStream = fs.createWriteStream('./shards-dashboard-react/src/img/' + file.filename);
-    readStream.pipe(writeStream);
+    const imageUrl = `http://localhost:4000/img/${file.filename}`;
   res.status(200).json(file.filename);
 });
 

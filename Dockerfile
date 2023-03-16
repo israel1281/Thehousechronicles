@@ -26,4 +26,4 @@ COPY . .
 EXPOSE 4000
 
 # Start the subdirectory and the root directory
-CMD ["npm", "start", "--prefix", "subdirectory"] && npm start
+CMD ["npm", "start"] && npm start

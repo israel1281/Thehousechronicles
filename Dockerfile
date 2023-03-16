@@ -19,11 +19,11 @@ RUN npm install
 # Copy app source code to /app
 COPY . .
 
-# Install dependencies for the subdirectory
-RUN cd shards-dashboard-react && npm install
+# # Install dependencies for the subdirectory
+# RUN cd shards-dashboard-react && npm install
 
 # Expose ports 4000 and 6000
-EXPOSE 4000 3000
+EXPOSE 4000
 
 # Start the subdirectory and the root directory
 CMD ["npm", "start", "--prefix", "subdirectory"] && npm start

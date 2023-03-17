@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "49d9a81e17c1455f6f0b",
+    "revision": "cdd33fb332fb6c7068cf",
     "url": "./static/css/main.c5390ac0.chunk.css"
   },
   {
-    "revision": "49d9a81e17c1455f6f0b",
-    "url": "./static/js/main.49d9a81e.chunk.js"
+    "revision": "cdd33fb332fb6c7068cf",
+    "url": "./static/js/main.cdd33fb3.chunk.js"
   },
   {
-    "revision": "6c887a4d51ccd133b7bf",
+    "revision": "5530f1a57a3155273644",
     "url": "./static/css/1.b81a61e6.chunk.css"
   },
   {
-    "revision": "6c887a4d51ccd133b7bf",
-    "url": "./static/js/1.6c887a4d.chunk.js"
+    "revision": "5530f1a57a3155273644",
+    "url": "./static/js/1.5530f1a5.chunk.js"
   },
   {
     "revision": "4a686d48d5a089750c49",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "./static/media/THE HOUSE CHRONICLES-01.3740e398.png"
   },
   {
-    "revision": "4d9a3011cb7093ee0a2c102d265dd8d8",
+    "revision": "34b7dfa2227d86ee45739b9187ada785",
     "url": "./index.html"
   }
 ];

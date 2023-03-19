@@ -47,10 +47,15 @@ class APIfeatures {
   }
 }
 
+function getYouTubeVideoId(url) {
+  const parsedUrl = new URL(url);
+  return parsedUrl.searchParams.get('v');
+}
+
 const postCtrl = {
   createPost: async (req, res) => {
     try {
-      const { title, author, image, content, category } = req.body;
+      const { title, author, image, content, category, iframe } = req.body;
       if (!title && !author && !image)
         return res
           .status(400)
@@ -62,6 +67,7 @@ const postCtrl = {
         image,
         content,
         category,
+        iframe
       });
 
       await newPost.save();
@@ -150,7 +156,9 @@ const postCtrl = {
   },
   updatePost: async (req, res) => {
     try {
-      await Post.findByIdAndUpdate({ _id: req.params.id }, { ...req.body });
+      await Post.findByIdAndUpdate({ _id: req.params.id }, { 
+        ...req.body 
+      });
 
       res.json({
         status: "success",

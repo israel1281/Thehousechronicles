@@ -18,6 +18,9 @@ const postSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "category",
     },
+    iframe: {
+      type: String
+    }
   },
   {
     timestamps: true,

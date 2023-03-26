@@ -582,7 +582,7 @@ mark,
 }
 
 .smally {
-  margin-top: -70px;
+  /* margin-top: -70px; */
 }
 
 @media (max-width: 768px) {

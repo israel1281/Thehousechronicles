@@ -107,16 +107,16 @@
                     </script>
                     <a href="/" class="nav-item nav-link active router-nav">Home</a>
                     <div class="nav-item dropdown">
-                        <a href="/category" class="nav-link dropdown-toggle" data-toggle="dropdown" data-link="category-publication">Publication</a>
+                        <a href="/category" class="nav-link dropdown-toggle" data-toggle="dropdown" data-link="category-publication">Articles</a>
                         <div class="dropdown-menu catdr rounded-0 m-0 bg-dark">
                             <a href="/category" class="dropdown-item router-nav" data-link="category-Satire">Satire</a>
                             <a href="/category" class="dropdown-item router-nav" data-link="category-Story time">Story time</a>
                             <a href="/category" class="dropdown-item router-nav" data-link="category-Did you know">Did you know</a>
-                            <a href="/category" class="dropdown-item router-nav" data-link="category-Interview publications">Interview publications</a>
+                            <a href="/category" class="dropdown-item router-nav" data-link="category-Interview publications">Interview</a>
                             <a href="/category" class="dropdown-item router-nav" data-link="category-News">News</a>
                         </div>
                     </div>
-                    <a href="/category" class="nav-item nav-link router-nav" data-link="category-bantz">Bantz</a>
+                    <a href="/category" class="nav-item nav-link router-nav" data-link="category-Bants">Bantz</a>
                     <div class="nav-item dropdown">
                         <a href="/category" class="nav-link dropdown-toggle" data-toggle="dropdown">The House</a>
                         <div class="dropdown-menu catdr rounded-0 m-0 bg-dark">
@@ -131,7 +131,7 @@
                             <a href="/category" class="dropdown-item router-nav" data-link="category-Ignition mojo">Ignition mojo</a>
                         </div>
                     </div>
-                    <a href="/about" class="nav-item nav-link router-nav" data-link="category-Satire">True Love</a>
+                    <a href="/category" class="nav-item nav-link router-nav" data-link="category-True Love">True Love</a>
                     <a href="/about" class="nav-item nav-link router-nav">About us</a>
                     <!-- <div class="nav-item dropdown">
                         <a href="/category" class="nav-link dropdown-toggle" data-toggle="dropdown">EXPOSÉ</a>
@@ -211,16 +211,19 @@
                                             <div class="text-body" href=""><small>${formatDate(post.createdAt)}</small></div>
                                         </div>
                                         <a
+                                        class="text-body"
+                                        href="/category"
+                                        data-link="category-${post.author}"
+                                        >
+                                        ${post.author}
+                                        </a>
+                                        <a
                                             class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold"
                                             href="/content"
                                             data-link="${post._id}"
                                         >
                                             ${post.title}
                                         </a>
-                                        <p class="m-0">
-                                            Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                            rebum clita rebum dolor stet amet justo
-                                        </p>
                                         </div>
                                     </div>
                                     </div>
@@ -237,13 +240,21 @@
                             localStorage.setItem('selectedLink', link);
                         });
 
-                        const categoryName = sessionStorage.getItem("selectedLink");
+                        const categoryName = localStorage.getItem("selectedLink");
                         const str = categoryName;
                         const words = str.split("-");
                         console.log(words)
-                        fetchData(words).then((data) => {
+                        
+                        if (words.length < 2) {
+                          // Category name is not available, don't show any data
+                          const categoriesWrapper = document.getElementById("categories-wrapper");
+                          categoriesWrapper.innerHTML = '';
+                        } else {
+                          // Category name is available, fetch and render data
+                          fetchData(words).then((data) => {
                             renderData(data, words);
-                        });
+                          });
+                        }
                         </script>
                     </div>
                     <!-- <div style="width: 100%; height: 6vh; margin-right: 50%; margin-top: 40px; display: flex; justify-content: center">

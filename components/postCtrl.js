@@ -128,7 +128,7 @@ const postCtrl = {
         );
 
         const filteredPosts =
-          catPosts && catPosts.length ? catPosts : categoryPosts;
+          catPosts && catPosts.length ? catPosts : [];
 
         res.json({
           status: "success",
@@ -138,6 +138,19 @@ const postCtrl = {
       }
     } catch (err) {
       res.status(500).json({ msg: err.message });
+    }
+  },
+  getAllPosts: async (req, res) => {
+    try {
+        const posts = await Post.find({ title: { $regex: req.query.title } }).sort({ _id: -1 }).populate("category")
+
+      res.json({
+        status: "success",
+        count: posts.length,
+        data: posts,
+      });
+    } catch (err) {
+      res.status(500).json({ msg: err.message })
     }
   },
   getPostsById: async (req, res) => {

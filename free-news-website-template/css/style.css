@@ -4287,8 +4287,7 @@ input[type="button"].btn-block {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #fff;
-  background-color: #34ce57;
+  color: #34ce57;
   border-color: #dee2e6 #dee2e6 #edeff4;
 }
 
@@ -9977,8 +9976,8 @@ h6,
 
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link.active {
-  color: #1e2024;
-  background: #34ce57;
+  color: #34ce57;
+  /* background: #34ce57; */
 }
 
 @media (max-width: 991.98px) {

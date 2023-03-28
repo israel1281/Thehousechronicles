@@ -9984,6 +9984,9 @@ h6,
   .navbar-dark .navbar-nav .nav-link {
     padding: 8px 15px;
   }
+  .social-none {
+    display: none
+  }
 }
 
 .owl-carousel .owl-dots {
@@ -10129,7 +10132,11 @@ h6,
   .news-lg .border {
     border-top: none !important;
   }
+  .social-none {
+    display: none
+  }
 }
+
 
 .contact-form .help-block ul {
   margin: 0;
